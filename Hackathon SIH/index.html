@@ -1,833 +1,1555 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SetuSkill — Academia–Industry Collaboration &amp; Skill Mapping Portal</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SetuSkill — Academia–Industry Skill Mapping &amp; Career Gateway</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- ============================================================ -->
-<!-- TOAST / ALERT ROOT                                            -->
-<!-- ============================================================ -->
-<div id="toastRoot" class="toast-root" aria-live="polite"></div>
+  <!-- ============================================================ -->
+  <!-- TOAST ROOT                                                    -->
+  <!-- ============================================================ -->
+  <div id="toastRoot" class="toast-root" aria-live="polite"></div>
 
-<!-- ============================================================ -->
-<!-- VIEW: LANDING                                                 -->
-<!-- ============================================================ -->
-<section id="view-landing" class="view active">
+  <!-- ============================================================ -->
+  <!-- VIEW: LANDING PAGE                                           -->
+  <!-- ============================================================ -->
+  <section id="view-landing" class="view active">
 
-  <header class="site-header">
-    <div class="site-header__inner">
-      <a href="#" class="brand" data-nav="landing">
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a href="#" class="brand" data-nav="landing">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="30" height="30">
+              <circle cx="16" cy="6" r="3.4" fill="var(--color-accent)" />
+              <circle cx="6" cy="24" r="3.4" fill="var(--color-primary)" />
+              <circle cx="26" cy="24" r="3.4" fill="var(--color-primary)" />
+              <circle cx="16" cy="17" r="2.6" fill="var(--color-success)" />
+              <path d="M16 9.4 16 14.6 M13.8 18.6 8.3 21.6 M18.2 18.6 23.7 21.6" stroke="var(--color-border-strong)"
+                stroke-width="1.4" fill="none" stroke-linecap="round" />
+            </svg>
+          </span>
+          <span class="brand__text">Setu<b>Skill</b></span>
+        </a>
+
+        <nav class="site-nav" aria-label="Primary">
+          <a href="#features">Platform</a>
+          <a href="#stakeholders">Who it's for</a>
+          <a href="#courses">Upskilling</a>
+          <a href="#colleges">Pune Institutes</a>
+          <a href="#help">Help</a>
+        </nav>
+
+        <div class="site-header__actions">
+          <button class="btn btn--ghost" data-open-auth="login">Log in</button>
+          <button class="btn btn--primary" data-open-auth="role-select">Get started</button>
+        </div>
+
+        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO SECTION WITH DEDICATED SHOWCASE IMAGE PLACEHOLDERS -->
+      <section class="hero">
+        <div class="hero__copy">
+          <p class="eyebrow">National Skill Mapping &amp; Career Initiative</p>
+          <h1>One bridge between <span class="text-accent">classrooms</span>, <span class="text-accent">campuses</span>
+            and <span class="text-accent">companies</span>.</h1>
+          <p class="hero__lede">SetuSkill connects students, engineering colleges, and industry on a verified skill
+            ledger — transforming academic learning into accredited career outcomes.</p>
+
+          <div class="hero__cta">
+            <button class="btn btn--primary btn--lg" data-open-auth="role-select">Create your account</button>
+            <button class="btn btn--outline btn--lg" data-open-auth="login">I already have an account</button>
+          </div>
+
+          <!-- ========================================================================= -->
+          <!-- MODULE 1: LANDING PAGE DEDICATED VISUAL SHOWCASE CONTAINERS                -->
+          <!-- Configure your image URLs in app.js or directly in the src attributes      -->
+          <!-- ========================================================================= -->
+          <div class="landing-showcase-strip" id="landingShowcaseContainer">
+            <!-- Showcase Image 1 Container -->
+            <div class="showcase-card" id="showcaseContainer1">
+              <div class="showcase-card__media">
+                <!-- PLACEHOLDER 1: Insert Image URL below or configure 'imagePlaceholder1' in app.js -->
+                <img id="imagePlaceholder1_img"
+                  src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='260' viewBox='0 0 400 260'><rect width='400' height='260' fill='%23123a63'/><circle cx='200' cy='110' r='50' fill='%23de6d1f' opacity='0.85'/><text x='200' y='116' fill='%23ffffff' font-family='sans-serif' font-size='18' font-weight='bold' text-anchor='middle'>🎓 Verified Campus Skills</text><text x='200' y='180' fill='%23e2e8f0' font-family='sans-serif' font-size='13' text-anchor='middle'>COEP • PICT • VIT • MIT-WPU</text><text x='200' y='210' fill='%23fbeee1' font-family='sans-serif' font-size='11' text-anchor='middle'>[imagePlaceholder1]</text></svg>"
+                  alt="SetuSkill Campus Verification Showcase" class="showcase-img">
+              </div>
+              <div class="showcase-card__caption">
+                <span class="badge badge--verified">✓ Accredited</span>
+                <strong>15 Pune Engineering Colleges</strong>
+              </div>
+            </div>
+
+            <!-- Showcase Image 2 Container -->
+            <div class="showcase-card" id="showcaseContainer2">
+              <div class="showcase-card__media">
+                <!-- PLACEHOLDER 2: Insert Image URL below or configure 'imagePlaceholder2' in app.js -->
+                <img id="imagePlaceholder2_img"
+                  src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='260' viewBox='0 0 400 260'><rect width='400' height='260' fill='%230a2540'/><rect x='80' y='60' width='240' height='100' rx='12' fill='%2317824f' opacity='0.85'/><text x='200' y='115' fill='%23ffffff' font-family='sans-serif' font-size='18' font-weight='bold' text-anchor='middle'>⚡ Direct Industry Hiring</text><text x='200' y='180' fill='%23e2e8f0' font-family='sans-serif' font-size='13' text-anchor='middle'>Skill-Matched Internships &amp; Jobs</text><text x='200' y='210' fill='%23fbeee1' font-family='sans-serif' font-size='11' text-anchor='middle'>[imagePlaceholder2]</text></svg>"
+                  alt="SetuSkill Industry Hiring Showcase" class="showcase-img">
+              </div>
+              <div class="showcase-card__caption">
+                <span class="badge badge--accent">★ Smart Match</span>
+                <strong>Recruiter Skill Mapping Engine</strong>
+              </div>
+            </div>
+          </div>
+          <!-- END MODULE 1 SHOWCASE -->
+
+          <dl class="hero__stats">
+            <div>
+              <dt>15</dt>
+              <dd>Pune Colleges</dd>
+            </div>
+            <div>
+              <dt>1,240+</dt>
+              <dd>Skills Tracked</dd>
+            </div>
+            <div>
+              <dt>98%</dt>
+              <dd>Verification Accuracy</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="hero__visual" aria-hidden="true">
+          <svg class="graph-svg" viewBox="0 0 480 420" xmlns="http://www.w3.org/2000/svg">
+            <g class="graph-links">
+              <path class="graph-link" d="M120 90 C 190 150, 210 190, 240 210" />
+              <path class="graph-link" d="M370 90 C 300 150, 280 190, 240 210" />
+              <path class="graph-link" d="M120 340 C 190 280, 210 240, 240 210" />
+              <path class="graph-link" d="M370 340 C 300 280, 280 240, 240 210" />
+              <path class="graph-link graph-link--core" d="M240 210 L240 210" />
+            </g>
+            <g class="graph-node graph-node--academia" transform="translate(120,90)">
+              <circle r="40" />
+              <text y="6">Academia</text>
+            </g>
+            <g class="graph-node graph-node--institute" transform="translate(370,90)">
+              <circle r="40" />
+              <text y="6">Institutes</text>
+            </g>
+            <g class="graph-node graph-node--student" transform="translate(120,340)">
+              <circle r="40" />
+              <text y="6">Students</text>
+            </g>
+            <g class="graph-node graph-node--industry" transform="translate(370,340)">
+              <circle r="40" />
+              <text y="6">Industry</text>
+            </g>
+            <g class="graph-node graph-node--core" transform="translate(240,210)">
+              <circle r="34" />
+              <text y="-3">Skill</text>
+              <text y="13">Map</text>
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <!-- STAKEHOLDERS -->
+      <section class="section" id="stakeholders">
+        <p class="eyebrow eyebrow--center">Three Roles, One Unified Ecosystem</p>
+        <h2 class="section__title">Built around students, faculty, and industry partners</h2>
+        <div class="cards-3">
+          <article class="role-card">
+            <span class="role-card__index">01</span>
+            <h3>Engineering Students</h3>
+            <p>Complete interactive course modules, earn verified credentials (≥70%), calculate job skill matches, and
+              connect directly with peers and hiring managers.</p>
+          </article>
+          <article class="role-card">
+            <span class="role-card__index">02</span>
+            <h3>Institutes &amp; Faculty</h3>
+            <p>Access department student directories, track cohort skill heatmaps, direct message students, and upload
+              custom technical assessments to the global pool.</p>
+          </article>
+          <article class="role-card">
+            <span class="role-card__index">03</span>
+            <h3>Industry Recruiters</h3>
+            <p>Publish job openings with verified skill requirements, review applicants ranked by skill match %, and
+              issue direct accepted proposals.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- PLATFORM MODULES -->
+      <section class="section section--alt" id="features">
+        <p class="eyebrow eyebrow--center">Comprehensive Features</p>
+        <h2 class="section__title">Complete Career &amp; Skill Mapping Infrastructure</h2>
+        <div class="cards-4">
+          <div class="feature-card">
+            <div class="feature-card__icon">🎓</div>
+            <h4>Interactive Learning</h4>
+            <p>Modular lessons with code snippets, chapter checkpoints, and instant skill testing.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon">🎯</div>
+            <h4>Job Skill Matcher</h4>
+            <p>Automated percentage matching algorithm comparing your skills to live openings.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon">💬</div>
+            <h4>Direct Messaging</h4>
+            <p>Real-time chat drawer to collaborate with connected students, professors, and mentors.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon">📜</div>
+            <h4>Verified Certificates</h4>
+            <p>Authenticated completion certificates with unique verification IDs and PDF printing.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PUNE INSTITUTES SECTION -->
+      <section class="section" id="colleges">
+        <p class="eyebrow eyebrow--center">Academic Network</p>
+        <h2 class="section__title">Partnered with 15 Premier Pune Engineering Institutes</h2>
+        <div class="pune-colleges-grid" id="landingCollegesGrid">
+          <!-- populated by app.js / backend.js -->
+        </div>
+      </section>
+
+      <!-- COURSES PREVIEW -->
+      <section class="section" id="courses">
+        <p class="eyebrow eyebrow--center">Interactive Curriculum</p>
+        <h2 class="section__title">Industry-Ready Upskilling Tracks</h2>
+        <div id="landingCourseStrip" class="course-strip"><!-- populated by app.js --></div>
+      </section>
+
+      <!-- HELP / CTA -->
+      <section class="section section--cta" id="help">
+        <h2>Ready to map your skills to industry demand?</h2>
+        <p>Create your verified profile in less than 3 minutes.</p>
+        <button class="btn btn--primary btn--lg" data-open-auth="role-select">Get Started Now</button>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <span>© 2026 SetuSkill — Smart India Hackathon Prototype.</span>
+        <div class="site-footer__links">
+          <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- VIEW: AUTH (Login & Refactored Registration Forms)            -->
+  <!-- ============================================================ -->
+  <section id="view-auth" class="view auth-shell">
+    <div class="auth-shell__panel auth-shell__panel--brand">
+      <a href="#" class="brand brand--on-dark" data-nav="landing">
         <span class="brand__mark" aria-hidden="true">
           <svg viewBox="0 0 32 32" width="30" height="30">
-            <circle cx="16" cy="6" r="3.4" fill="var(--color-accent)"/>
-            <circle cx="6" cy="24" r="3.4" fill="var(--color-primary)"/>
-            <circle cx="26" cy="24" r="3.4" fill="var(--color-primary)"/>
-            <circle cx="16" cy="17" r="2.6" fill="var(--color-success)"/>
-            <path d="M16 9.4 16 14.6 M13.8 18.6 8.3 21.6 M18.2 18.6 23.7 21.6" stroke="var(--color-border-strong)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <circle cx="16" cy="6" r="3.4" fill="var(--color-accent)" />
+            <circle cx="6" cy="24" r="3.4" fill="#ffffff" />
+            <circle cx="26" cy="24" r="3.4" fill="#ffffff" />
+            <circle cx="16" cy="17" r="2.6" fill="var(--color-success)" />
+            <path d="M16 9.4 16 14.6 M13.8 18.6 8.3 21.6 M18.2 18.6 23.7 21.6" stroke="rgba(255,255,255,.55)"
+              stroke-width="1.4" fill="none" stroke-linecap="round" />
           </svg>
         </span>
         <span class="brand__text">Setu<b>Skill</b></span>
       </a>
-
-      <nav class="site-nav" aria-label="Primary">
-        <a href="#features">Platform</a>
-        <a href="#stakeholders">Who it's for</a>
-        <a href="#courses">Upskilling</a>
-        <a href="#help">Help</a>
-      </nav>
-
-      <div class="site-header__actions">
-        <button class="btn btn--ghost" data-open-auth="login">Log in</button>
-        <button class="btn btn--primary" data-open-auth="role-select">Get started</button>
+      <div class="auth-shell__quote">
+        <p>“A national ledger of verified skills connecting classrooms, campuses, and companies.”</p>
       </div>
-
-      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero__copy">
-        <p class="eyebrow">National Skill Mapping Initiative</p>
-        <h1>One bridge between <span class="text-accent">classrooms</span>, <span class="text-accent">campuses</span> and <span class="text-accent">companies</span>.</h1>
-        <p class="hero__lede">SetuSkill connects students, institutes and industry on a single ledger of verified skills — so learning maps directly to what the workforce needs next.</p>
-        <div class="hero__cta">
-          <button class="btn btn--primary btn--lg" data-open-auth="role-select">Create your account</button>
-          <button class="btn btn--outline btn--lg" data-open-auth="login">I already have an account</button>
-        </div>
-        <dl class="hero__stats">
-          <div><dt>1,240+</dt><dd>Skills tracked</dd></div>
-          <div><dt>320</dt><dd>Partner institutes</dd></div>
-          <div><dt>98</dt><dd>Hiring industries</dd></div>
-        </dl>
-      </div>
-
-      <div class="hero__visual" aria-hidden="true">
-        <svg class="graph-svg" viewBox="0 0 480 420" xmlns="http://www.w3.org/2000/svg">
-          <g class="graph-links">
-            <path class="graph-link" d="M120 90 C 190 150, 210 190, 240 210"/>
-            <path class="graph-link" d="M370 90 C 300 150, 280 190, 240 210"/>
-            <path class="graph-link" d="M120 340 C 190 280, 210 240, 240 210"/>
-            <path class="graph-link" d="M370 340 C 300 280, 280 240, 240 210"/>
-            <path class="graph-link graph-link--core" d="M240 210 L240 210"/>
-          </g>
-          <g class="graph-node graph-node--academia" transform="translate(120,90)">
-            <circle r="40"/>
-            <text y="6">Academia</text>
-          </g>
-          <g class="graph-node graph-node--institute" transform="translate(370,90)">
-            <circle r="40"/>
-            <text y="6">Institutes</text>
-          </g>
-          <g class="graph-node graph-node--student" transform="translate(120,340)">
-            <circle r="40"/>
-            <text y="6">Students</text>
-          </g>
-          <g class="graph-node graph-node--industry" transform="translate(370,340)">
-            <circle r="40"/>
-            <text y="6">Industry</text>
-          </g>
-          <g class="graph-node graph-node--core" transform="translate(240,210)">
-            <circle r="34"/>
-            <text y="-3">Skill</text>
-            <text y="13">Map</text>
-          </g>
-        </svg>
-      </div>
-    </section>
-
-    <!-- STAKEHOLDERS -->
-    <section class="section" id="stakeholders">
-      <p class="eyebrow eyebrow--center">Three roles, one portal</p>
-      <h2 class="section__title">Built around who actually does the work</h2>
-      <div class="cards-3">
-        <article class="role-card">
-          <span class="role-card__index">01</span>
-          <h3>Students</h3>
-          <p>Build a verified skill profile, take assessments, join upskilling courses and get discovered by hiring industries.</p>
-        </article>
-        <article class="role-card">
-          <span class="role-card__index">02</span>
-          <h3>Institutes &amp; Faculty</h3>
-          <p>Track cohort progress, run placement drives, verify credentials and host workshops with industry experts.</p>
-        </article>
-        <article class="role-card">
-          <span class="role-card__index">03</span>
-          <h3>Industry</h3>
-          <p>Search verified talent by skill, sponsor programmes, and publish real hiring signals back into the curriculum.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- FEATURES -->
-    <section class="section section--alt" id="features">
-      <p class="eyebrow eyebrow--center">Platform</p>
-      <h2 class="section__title">Everything a skill-mapping pipeline needs</h2>
-      <div class="cards-4">
-        <div class="feature-card">
-          <div class="feature-card__icon">📊</div>
-          <h4>Skill Dashboard</h4>
-          <p>Completion tracking, verified badges and a contribution heatmap of daily activity.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-card__icon">🎓</div>
-          <h4>Learn &amp; Upskill</h4>
-          <p>Curated courses across 10 core domains with provider, level and duration up front.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-card__icon">✅</div>
-          <h4>Assessments</h4>
-          <p>Timed, skill-specific tests that convert into verified badges on your profile.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-card__icon">📰</div>
-          <h4>Articles &amp; Events</h4>
-          <p>Announcements from institutes and industry, plus local workshops near you.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- COURSES PREVIEW -->
-    <section class="section" id="courses">
-      <p class="eyebrow eyebrow--center">A sample of what's inside</p>
-      <h2 class="section__title">Ten core upskilling tracks to start with</h2>
-      <div id="landingCourseStrip" class="course-strip"><!-- populated by app.js --></div>
-    </section>
-
-    <!-- HELP / CTA -->
-    <section class="section section--cta" id="help">
-      <h2>Ready to map your skills to the market?</h2>
-      <p>It takes about four minutes to set up a profile.</p>
-      <button class="btn btn--primary btn--lg" data-open-auth="role-select">Create your account</button>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="site-footer__inner">
-      <span>© 2026 SetuSkill — a Smart India Hackathon prototype.</span>
-      <div class="site-footer__links">
-        <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Contact</a>
-      </div>
-    </div>
-  </footer>
-</section>
-
-<!-- ============================================================ -->
-<!-- VIEW: AUTH (login / role select / registration forms)         -->
-<!-- ============================================================ -->
-<section id="view-auth" class="view auth-shell">
-  <div class="auth-shell__panel auth-shell__panel--brand">
-    <a href="#" class="brand brand--on-dark" data-nav="landing">
-      <span class="brand__mark" aria-hidden="true">
-        <svg viewBox="0 0 32 32" width="30" height="30">
-          <circle cx="16" cy="6" r="3.4" fill="var(--color-accent)"/>
-          <circle cx="6" cy="24" r="3.4" fill="#ffffff"/>
-          <circle cx="26" cy="24" r="3.4" fill="#ffffff"/>
-          <circle cx="16" cy="17" r="2.6" fill="var(--color-success)"/>
-          <path d="M16 9.4 16 14.6 M13.8 18.6 8.3 21.6 M18.2 18.6 23.7 21.6" stroke="rgba(255,255,255,.55)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-        </svg>
-      </span>
-      <span class="brand__text">Setu<b>Skill</b></span>
-    </a>
-    <div class="auth-shell__quote">
-      <p>“A national ledger of verified skill, so no learner and no opening go unmatched.”</p>
-    </div>
-    <ul class="auth-shell__points">
-      <li>Verified skill badges, not just certificates</li>
-      <li>Direct line from classroom to hiring desk</li>
-      <li>Built for students, faculty and industry alike</li>
-    </ul>
-  </div>
-
-  <div class="auth-shell__panel auth-shell__panel--form">
-    <button class="auth-close" id="authCloseBtn" aria-label="Close">✕</button>
-
-    <!-- LOGIN -->
-    <div class="auth-card" id="auth-login" data-auth-card>
-      <h2>Welcome back</h2>
-      <p class="auth-card__sub">Log in to continue to your dashboard.</p>
-
-      <div class="segmented" id="loginRoleSegmented">
-        <button type="button" class="segmented__btn is-active" data-role="student">Student</button>
-        <button type="button" class="segmented__btn" data-role="faculty">Institute/Faculty</button>
-        <button type="button" class="segmented__btn" data-role="industry">Industry</button>
-      </div>
-
-      <form id="loginForm" novalidate>
-        <div class="field">
-          <label for="loginEmail">Email</label>
-          <input type="email" id="loginEmail" name="email" placeholder="you@example.com" required>
-        </div>
-        <div class="field">
-          <label for="loginPassword">Password</label>
-          <input type="password" id="loginPassword" name="password" placeholder="••••••••" required>
-        </div>
-        <div class="field-row field-row--between">
-          <label class="checkbox"><input type="checkbox" name="remember"> Remember me</label>
-          <a href="#" class="link-sm">Forgot password?</a>
-        </div>
-        <button type="submit" class="btn btn--primary btn--block">Log in</button>
-      </form>
-
-      <p class="auth-switch">New here? <a href="#" data-switch-auth="role-select">Create an account</a></p>
-
-      <!-- DEMO ACCOUNTS (Hackathon quick-login) -->
-      <div class="demo-logins" id="demoLoginsBlock">
-        <div class="demo-logins__label">⚡ Instant demo login</div>
-        <div class="demo-logins__btns">
-          <button type="button" class="btn btn--demo" id="demoLoginStudent">🎓 Student</button>
-          <button type="button" class="btn btn--demo" id="demoLoginFaculty">🏛️ Institute</button>
-          <button type="button" class="btn btn--demo" id="demoLoginIndustry">🏢 Industry</button>
-        </div>
-        <p class="demo-logins__note">Pre-filled accounts for hackathon demo — no registration needed.</p>
-      </div>
+      <ul class="auth-shell__points">
+        <li>✓ Verified skill badges &amp; authenticated certificates</li>
+        <li>✓ Automated job skill matcher &amp; direct applications</li>
+        <li>✓ Peer connections &amp; real-time messaging drawer</li>
+        <li>✓ 15 Pune Engineering Colleges integrated</li>
+      </ul>
     </div>
 
-    <!-- ROLE SELECT -->
-    <div class="auth-card" id="auth-role-select" data-auth-card hidden>
-      <h2>Create your account</h2>
-      <p class="auth-card__sub">Choose how you'll use SetuSkill.</p>
+    <div class="auth-shell__panel auth-shell__panel--form">
+      <button class="auth-close" id="authCloseBtn" aria-label="Close">✕</button>
 
-      <div class="role-select-grid">
-        <button type="button" class="role-select-card" data-select-role="student">
-          <span class="role-select-card__icon">🎓</span>
-          <span class="role-select-card__title">Student</span>
-          <span class="role-select-card__desc">Build a skill profile, learn and get discovered.</span>
-        </button>
-        <button type="button" class="role-select-card" data-select-role="faculty">
-          <span class="role-select-card__icon">🏛️</span>
-          <span class="role-select-card__title">Institute / Faculty</span>
-          <span class="role-select-card__desc">Manage cohorts, verify skills, host events.</span>
-        </button>
-        <button type="button" class="role-select-card" data-select-role="industry">
-          <span class="role-select-card__icon">🏢</span>
-          <span class="role-select-card__title">Industry</span>
-          <span class="role-select-card__desc">Discover verified talent and sponsor programmes.</span>
-        </button>
-      </div>
+      <!-- LOGIN -->
+      <div class="auth-card" id="auth-login" data-auth-card>
+        <h2>Welcome back</h2>
+        <p class="auth-card__sub">Log in to continue to your dashboard.</p>
 
-      <p class="auth-switch">Already registered? <a href="#" data-switch-auth="login">Log in</a></p>
-    </div>
+        <div class="segmented" id="loginRoleSegmented">
+          <button type="button" class="segmented__btn is-active" data-role="student">Student</button>
+          <button type="button" class="segmented__btn" data-role="faculty">Institute / Faculty</button>
+          <button type="button" class="segmented__btn" data-role="industry">Industry</button>
+        </div>
 
-    <!-- REGISTER: STUDENT -->
-    <div class="auth-card auth-card--wide" id="auth-register-student" data-auth-card hidden>
-      <button type="button" class="back-link" data-switch-auth="role-select">← Change role</button>
-      <h2>Student registration</h2>
-      <p class="auth-card__sub">Shared details, plus a few student-specific fields.</p>
-
-      <form id="registerStudentForm" class="grid-form" novalidate>
-        <fieldset>
-          <legend>Personal details</legend>
-          <div class="grid-form__row grid-form__row--3">
-            <div class="field"><label>First name</label><input type="text" name="firstName" required></div>
-            <div class="field"><label>Middle name</label><input type="text" name="middleName"></div>
-            <div class="field"><label>Last name</label><input type="text" name="lastName" required></div>
-          </div>
-          <div class="grid-form__row grid-form__row--2">
-            <div class="field"><label>Contact number</label><input type="tel" name="contact" placeholder="98xxxxxxxx" required></div>
-            <div class="field"><label>Email</label><input type="email" name="email" required></div>
-          </div>
-          <div class="grid-form__row grid-form__row--2">
-            <div class="field"><label>Password</label><input type="password" name="password" required></div>
-            <div class="field"><label>Confirm password</label><input type="password" name="confirmPassword" required></div>
-          </div>
-          <div class="grid-form__row grid-form__row--2">
-            <div class="field">
-              <label>Gender</label>
-              <select name="gender" required>
-                <option value="">Select</option>
-                <option>Female</option><option>Male</option><option>Other</option><option>Prefer not to say</option>
-              </select>
-            </div>
-            <div class="field"><label>Last passed course</label><input type="text" name="lastCourse" placeholder="e.g. Class XII / Diploma" required></div>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>Location &amp; institute</legend>
-          <div class="grid-form__row grid-form__row--2">
-            <div class="field">
-              <label>State</label>
-              <select name="state" required>
-                <option value="">Select state</option>
-                <option>Maharashtra</option><option>Delhi</option><option>Karnataka</option>
-                <option>Tamil Nadu</option><option>Uttar Pradesh</option><option>Other</option>
-              </select>
-            </div>
-            <div class="field"><label>City / District</label><input type="text" name="city" required></div>
+        <form id="loginForm" novalidate>
+          <div class="field">
+            <label for="loginEmail">Email</label>
+            <input type="email" id="loginEmail" name="email" placeholder="you@example.com" required>
           </div>
           <div class="field">
-            <label>College / Institute</label>
-            <select name="institute" id="studentInstituteSelect" required>
-              <option value="">Select institute</option>
-            </select>
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" name="password" placeholder="••••••••" required>
           </div>
-        </fieldset>
+          <div class="field-row field-row--between">
+            <label class="checkbox"><input type="checkbox" name="remember"> Remember me</label>
+            <a href="#" class="link-sm">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn btn--primary btn--block">Log in</button>
+        </form>
 
-        <fieldset>
-          <legend>Identity &amp; academics</legend>
-          <div class="grid-form__row grid-form__row--2">
-            <div class="field"><label>Aadhaar number <span class="hint">(mock, placeholder only)</span></label><input type="text" name="aadhaar" placeholder="XXXX XXXX XXXX" maxlength="14"></div>
-            <div class="field"><label>Upload ID card</label><input type="file" name="idCard"></div>
-          </div>
-          <div class="grid-form__row grid-form__row--2">
-            <div class="field"><label>Student ID</label><input type="text" name="studentId" required></div>
-            <div class="field"><label>Academic percentage</label><input type="number" name="academicPercentage" min="0" max="100" step="0.01" required></div>
-          </div>
-        </fieldset>
+        <p class="auth-switch">New here? <a href="#" data-switch-auth="role-select">Create an account</a></p>
 
-        <label class="checkbox checkbox--terms">
-          <input type="checkbox" name="terms" required>
-          I agree to the Terms of Service and Privacy Policy.
-        </label>
-
-        <button type="submit" class="btn btn--primary btn--block btn--lg">Create student account</button>
-      </form>
-      <p class="auth-switch">Already registered? <a href="#" data-switch-auth="login">Log in</a></p>
-    </div>
-
-    <!-- REGISTER: FACULTY -->
-    <div class="auth-card auth-card--wide" id="auth-register-faculty" data-auth-card hidden>
-      <button type="button" class="back-link" data-switch-auth="role-select">← Change role</button>
-      <h2>Institute / Faculty registration</h2>
-      <p class="auth-card__sub">Shared details, plus faculty-specific fields.</p>
-
-      <form id="registerFacultyForm" class="grid-form" novalidate>
-        <fieldset>
-          <legend>Personal details</legend>
-          <div class="grid-form__row grid-form__row--3">
-            <div class="field"><label>First name</label><input type="text" name="firstName" required></div>
-            <div class="field"><label>Middle name</label><input type="text" name="middleName"></div>
-            <div class="field"><label>Last name</label><input type="text" name="lastName" required></div>
+        <!-- DEMO ACCOUNTS -->
+        <div class="demo-logins" id="demoLoginsBlock">
+          <div class="demo-logins__label">⚡ Instant demo login</div>
+          <div class="demo-logins__btns">
+            <button type="button" class="btn btn--demo" id="demoLoginStudent">🎓 Student (COEP)</button>
+            <button type="button" class="btn btn--demo" id="demoLoginFaculty">🏛️ Faculty (PICT)</button>
+            <button type="button" class="btn btn--demo" id="demoLoginIndustry">🏢 Industry (TechBridge)</button>
           </div>
-          <div class="grid-form__row grid-form__row--2">
-            <div class="field"><label>Contact number</label><input type="tel" name="contact" required></div>
-            <div class="field"><label>Email</label><input type="email" name="email" required></div>
-          </div>
-          <div class="grid-form__row grid-form__row--2">
-            <div class="field"><label>Password</label><input type="password" name="password" required></div>
-            <div class="field"><label>Confirm password</label><input type="password" name="confirmPassword" required></div>
-          </div>
-          <div class="grid-form__row grid-form__row--2">
+          <p class="demo-logins__note">Pre-filled accounts for evaluation — no registration needed.</p>
+        </div>
+      </div>
+
+      <!-- ROLE SELECT -->
+      <div class="auth-card" id="auth-role-select" data-auth-card hidden>
+        <h2>Create your account</h2>
+        <p class="auth-card__sub">Choose how you will use SetuSkill.</p>
+
+        <div class="role-select-grid">
+          <button type="button" class="role-select-card" data-select-role="student">
+            <span class="role-select-card__icon">🎓</span>
+            <span class="role-select-card__title">Student</span>
+            <span class="role-select-card__desc">Upskill, earn verified certificates, and match with jobs.</span>
+          </button>
+          <button type="button" class="role-select-card" data-select-role="faculty">
+            <span class="role-select-card__icon">🏛️</span>
+            <span class="role-select-card__title">Institute / Faculty</span>
+            <span class="role-select-card__desc">Track student cohorts, message mentees, and upload quizzes.</span>
+          </button>
+          <button type="button" class="role-select-card" data-select-role="industry">
+            <span class="role-select-card__icon">🏢</span>
+            <span class="role-select-card__title">Industry Partner</span>
+            <span class="role-select-card__desc">Post openings and discover verified technical talent.</span>
+          </button>
+        </div>
+
+        <p class="auth-switch">Already registered? <a href="#" data-switch-auth="login">Log in</a></p>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- MODULE 2: REFACTORED STUDENT REGISTRATION                    -->
+      <!-- Combined Name Field, Dropdown, 15 Pune Colleges, PW Meter     -->
+      <!-- ============================================================ -->
+      <div class="auth-card auth-card--wide" id="auth-register-student" data-auth-card hidden>
+        <button type="button" class="back-link" data-switch-auth="role-select">← Change role</button>
+        <h2>Student Registration</h2>
+        <p class="auth-card__sub">Join your college cohort on the national skill map.</p>
+
+        <form id="registerStudentForm" class="grid-form" novalidate>
+          <fieldset>
+            <legend>Personal &amp; Contact Details</legend>
+
+            <!-- Requirement 1: Single Combined Name Field -->
             <div class="field">
-              <label>Gender</label>
-              <select name="gender" required>
-                <option value="">Select</option>
-                <option>Female</option><option>Male</option><option>Other</option><option>Prefer not to say</option>
-              </select>
+              <label for="studentFullName">Your Name</label>
+              <input type="text" id="studentFullName" name="fullName" placeholder="e.g. Priya Sandip Sharma" required>
             </div>
-            <div class="field"><label>Last passed course</label><input type="text" name="lastCourse" placeholder="Highest qualification" required></div>
-          </div>
-        </fieldset>
 
-        <fieldset>
-          <legend>Location &amp; institute</legend>
-          <div class="grid-form__row grid-form__row--2">
-            <div class="field">
-              <label>State</label>
-              <select name="state" required>
-                <option value="">Select state</option>
-                <option>Maharashtra</option><option>Delhi</option><option>Karnataka</option>
-                <option>Tamil Nadu</option><option>Uttar Pradesh</option><option>Other</option>
-              </select>
-            </div>
-            <div class="field"><label>City / District</label><input type="text" name="city" required></div>
-          </div>
-          <div class="field">
-            <label>College / Institute</label>
-            <select name="institute" id="facultyInstituteSelect" required>
-              <option value="">Select institute</option>
-            </select>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>Identity &amp; credentials</legend>
-          <div class="grid-form__row grid-form__row--2">
-            <div class="field"><label>Aadhaar number <span class="hint">(mock, placeholder only)</span></label><input type="text" name="aadhaar" placeholder="XXXX XXXX XXXX" maxlength="14"></div>
-            <div class="field"><label>Upload ID card</label><input type="file" name="idCard"></div>
-          </div>
-          <div class="grid-form__row grid-form__row--2">
-            <div class="field"><label>Faculty ID</label><input type="text" name="facultyId" required></div>
-            <div class="field"><label>Registration number</label><input type="text" name="registrationNumber" required></div>
-          </div>
-        </fieldset>
-
-        <label class="checkbox checkbox--terms">
-          <input type="checkbox" name="terms" required>
-          I agree to the Terms of Service and Privacy Policy.
-        </label>
-
-        <button type="submit" class="btn btn--primary btn--block btn--lg">Create faculty account</button>
-      </form>
-      <p class="auth-switch">Already registered? <a href="#" data-switch-auth="login">Log in</a></p>
-    </div>
-
-    <!-- REGISTER: INDUSTRY -->
-    <div class="auth-card auth-card--wide" id="auth-register-industry" data-auth-card hidden>
-      <button type="button" class="back-link" data-switch-auth="role-select">← Change role</button>
-      <h2>Industry registration</h2>
-      <p class="auth-card__sub">Tell us about your organisation.</p>
-
-      <form id="registerIndustryForm" class="grid-form" novalidate>
-        <fieldset>
-          <legend>Organisation details</legend>
-          <div class="field"><label>Company name</label><input type="text" name="companyName" required></div>
-          <div class="grid-form__row grid-form__row--2">
-            <div class="field"><label>Business email</label><input type="email" name="businessEmail" required></div>
-            <div class="field"><label>Corporate ID (CIN / GST) <span class="hint">(mock)</span></label><input type="text" name="corporateId" required></div>
-          </div>
-          <div class="grid-form__row grid-form__row--2">
-            <div class="field">
-              <label>Industry sector</label>
-              <select name="sector" required>
-                <option value="">Select sector</option>
-                <option>Information Technology</option>
-                <option>Manufacturing</option>
-                <option>Finance &amp; Banking</option>
-                <option>Healthcare</option>
-                <option>Retail &amp; E-commerce</option>
-                <option>Automotive</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div class="field"><label>Password</label><input type="password" name="password" required></div>
-          </div>
-        </fieldset>
-
-        <label class="checkbox checkbox--terms">
-          <input type="checkbox" name="terms" required>
-          I agree to the Terms of Service and Privacy Policy.
-        </label>
-
-        <button type="submit" class="btn btn--primary btn--block btn--lg">Create industry account</button>
-      </form>
-      <p class="auth-switch">Already registered? <a href="#" data-switch-auth="login">Log in</a></p>
-    </div>
-
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- VIEW: PROFILE SETUP (post-registration onboarding)            -->
-<!-- ============================================================ -->
-<section id="view-profile-setup" class="view">
-  <div class="setup-shell">
-    <aside class="setup-shell__aside">
-      <a href="#" class="brand" data-nav="landing">
-        <span class="brand__mark" aria-hidden="true">
-          <svg viewBox="0 0 32 32" width="26" height="26">
-            <circle cx="16" cy="6" r="3.4" fill="var(--color-accent)"/>
-            <circle cx="6" cy="24" r="3.4" fill="var(--color-primary)"/>
-            <circle cx="26" cy="24" r="3.4" fill="var(--color-primary)"/>
-            <circle cx="16" cy="17" r="2.6" fill="var(--color-success)"/>
-          </svg>
-        </span>
-        <span class="brand__text">Setu<b>Skill</b></span>
-      </a>
-      <ol class="setup-steps" id="setupSteps">
-        <li class="is-active" data-step="1"><span>1</span>Photo &amp; basics</li>
-        <li data-step="2"><span>2</span>Skills</li>
-        <li data-step="3"><span>3</span>Qualifications</li>
-        <li data-step="4"><span>4</span>Role details</li>
-      </ol>
-    </aside>
-
-    <div class="setup-shell__main">
-      <div class="setup-progress"><div class="setup-progress__bar" id="setupProgressBar" style="width:25%"></div></div>
-
-      <form id="profileSetupForm">
-        <!-- STEP 1 -->
-        <section class="setup-step is-active" data-setup-step="1">
-          <h2>Set up your profile photo</h2>
-          <p class="auth-card__sub">This appears across your dashboard and to anyone reviewing your skill profile.</p>
-          <div class="photo-upload">
-            <div class="photo-upload__preview" id="photoPreview" aria-hidden="true">📷</div>
-            <div>
-              <label for="photoInput" class="btn btn--outline">Choose photo</label>
-              <input type="file" id="photoInput" name="photo" accept="image/*" hidden>
-              <p class="hint">PNG or JPG, up to 2MB. Placeholder only in this prototype.</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- STEP 2 -->
-        <section class="setup-step" data-setup-step="2">
-          <h2>Map your skills</h2>
-          <p class="auth-card__sub">Select the skills you already have, and the ones you'd like to learn next.</p>
-
-          <div class="field">
-            <label>Skills you have</label>
-            <input type="text" id="skillsHaveSearch" placeholder="Search skills…" class="skill-search">
-            <div class="skill-multiselect" id="skillsHaveGrid"><!-- populated by app.js from backend.js SKILLS --></div>
-          </div>
-
-          <div class="field">
-            <label>Skills you want to learn</label>
-            <input type="text" id="skillsLearnSearch" placeholder="Search skills…" class="skill-search">
-            <div class="skill-multiselect" id="skillsLearnGrid"><!-- populated by app.js from backend.js SKILLS --></div>
-          </div>
-        </section>
-
-        <!-- STEP 3 -->
-        <section class="setup-step" data-setup-step="3">
-          <h2>Add your qualifications</h2>
-          <p class="auth-card__sub">Upload previous degrees or certificates for verification.</p>
-          <div class="field">
-            <label>Upload qualifications / degrees</label>
-            <input type="file" name="qualifications" multiple>
-            <p class="hint">You can add more later from your dashboard.</p>
-          </div>
-          <div class="field" id="qualificationsList"></div>
-        </section>
-
-        <!-- STEP 4 -->
-        <section class="setup-step" data-setup-step="4">
-          <div id="setupStudentFields" hidden>
-            <h2>Student details</h2>
             <div class="grid-form__row grid-form__row--2">
               <div class="field">
-                <label>Branch / Department</label>
-                <select name="branch">
-                  <option value="">Select branch</option>
-                  <option>Computer Science</option><option>Electronics</option>
-                  <option>Mechanical</option><option>Civil</option>
-                  <option>Robotics &amp; Automation</option><option>Commerce</option>
+                <label for="studentContact">Contact Number</label>
+                <input type="tel" id="studentContact" name="contact" placeholder="98xxxxxxxx" required>
+              </div>
+              <div class="field">
+                <label for="studentEmail">Email Address</label>
+                <input type="email" id="studentEmail" name="email" placeholder="priya@example.com" required>
+              </div>
+            </div>
+
+            <!-- Password with Interactive Strength Meter -->
+            <div class="grid-form__row grid-form__row--2">
+              <div class="field">
+                <label for="studentPassword">Password</label>
+                <input type="password" id="studentPassword" name="password" placeholder="Create a strong password"
+                  required autocomplete="new-password">
+
+                <!-- Requirement: Password Strength Meter -->
+                <div class="pw-meter" id="studentPwMeter">
+                  <div class="pw-meter__bar">
+                    <div class="pw-meter__fill" id="studentPwFill"></div>
+                  </div>
+                  <div class="pw-meter__info">
+                    <span class="pw-meter__label" id="studentPwLabel">Strength: None</span>
+                    <span class="pw-meter__badge" id="studentPwBadge">6+ chars, Aa, 123, !@#</span>
+                  </div>
+                  <ul class="pw-rules" id="studentPwRules">
+                    <li id="rule-stu-len">✕ Min 6 characters</li>
+                    <li id="rule-stu-case">✕ Uppercase &amp; lowercase</li>
+                    <li id="rule-stu-num">✕ At least 1 number</li>
+                    <li id="rule-stu-special">✕ Special char (!@#$%^&amp;*)</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="studentConfirmPassword">Confirm Password</label>
+                <input type="password" id="studentConfirmPassword" name="confirmPassword"
+                  placeholder="Re-enter password" required>
+              </div>
+            </div>
+
+            <div class="grid-form__row grid-form__row--2">
+              <div class="field">
+                <label for="studentGender">Gender</label>
+                <select id="studentGender" name="gender" required>
+                  <option value="">Select</option>
+                  <option>Female</option>
+                  <option>Male</option>
+                  <option>Other</option>
+                  <option>Prefer not to say</option>
+                </select>
+              </div>
+
+              <!-- Requirement 2: Last Passed Course Dropdown -->
+              <div class="field">
+                <label for="studentLastCourse">Last Passed Course</label>
+                <select id="studentLastCourse" name="lastCourse" required>
+                  <option value="">Select Last Passed Course</option>
+                  <option value="10th Standard">10th Standard</option>
+                  <option value="12th Standard">12th Standard</option>
+                  <option value="Diploma">Diploma</option>
+                  <option value="Bachelor's Degree">Bachelor's Degree</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Location &amp; Institute</legend>
+            <div class="grid-form__row grid-form__row--2">
+              <div class="field">
+                <label for="studentState">State</label>
+                <select id="studentState" name="state" required>
+                  <option value="Maharashtra" selected>Maharashtra</option>
+                  <option>Delhi</option>
+                  <option>Karnataka</option>
+                  <option>Tamil Nadu</option>
+                  <option>Uttar Pradesh</option>
                   <option>Other</option>
                 </select>
               </div>
               <div class="field">
-                <label>Current year</label>
-                <select name="currentYear">
-                  <option value="">Select year</option>
-                  <option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option>
+                <label for="studentCity">City / District</label>
+                <input type="text" id="studentCity" name="city" value="Pune" required>
+              </div>
+            </div>
+
+            <!-- Requirement 2: 15 Pune Engineering Colleges Dropdown -->
+            <div class="field">
+              <label for="studentInstituteSelect">College / Institute (Pune)</label>
+              <select name="institute" id="studentInstituteSelect" required>
+                <option value="">Select Pune Engineering College</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Identity &amp; Academics</legend>
+            <div class="grid-form__row grid-form__row--2">
+              <div class="field">
+                <label>Student ID / PRN Number</label>
+                <input type="text" name="studentId" placeholder="e.g. 112203045" required>
+              </div>
+              <div class="field">
+                <label>Academic Percentage / CGPA (Equiv %)</label>
+                <input type="number" name="academicPercentage" min="0" max="100" step="0.01" placeholder="85.50"
+                  required>
+              </div>
+            </div>
+          </fieldset>
+
+          <label class="checkbox checkbox--terms">
+            <input type="checkbox" name="terms" required checked>
+            I agree to the SetuSkill Terms of Service and Verification Policy.
+          </label>
+
+          <button type="submit" class="btn btn--primary btn--block btn--lg">Create Student Account</button>
+        </form>
+        <p class="auth-switch">Already registered? <a href="#" data-switch-auth="login">Log in</a></p>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- MODULE 2: REFACTORED FACULTY / TEACHER REGISTRATION          -->
+      <!-- Combined Name Field, 15 Pune Colleges, PW Meter               -->
+      <!-- ============================================================ -->
+      <div class="auth-card auth-card--wide" id="auth-register-faculty" data-auth-card hidden>
+        <button type="button" class="back-link" data-switch-auth="role-select">← Change role</button>
+        <h2>Faculty / Institute Registration</h2>
+        <p class="auth-card__sub">Register to mentor student cohorts and upload department assessments.</p>
+
+        <form id="registerFacultyForm" class="grid-form" novalidate>
+          <fieldset>
+            <legend>Personal &amp; Contact Details</legend>
+
+            <!-- Requirement 1: Combined Name Field -->
+            <div class="field">
+              <label for="facultyFullName">Your Name</label>
+              <input type="text" id="facultyFullName" name="fullName" placeholder="e.g. Dr. Arjun Mehta" required>
+            </div>
+
+            <div class="grid-form__row grid-form__row--2">
+              <div class="field">
+                <label for="facultyContact">Contact Number</label>
+                <input type="tel" id="facultyContact" name="contact" placeholder="98xxxxxxxx" required>
+              </div>
+              <div class="field">
+                <label for="facultyEmail">Email Address</label>
+                <input type="email" id="facultyEmail" name="email" placeholder="faculty@pict.edu" required>
+              </div>
+            </div>
+
+            <!-- Password with Interactive Strength Meter -->
+            <div class="grid-form__row grid-form__row--2">
+              <div class="field">
+                <label for="facultyPassword">Password</label>
+                <input type="password" id="facultyPassword" name="password" placeholder="Create a strong password"
+                  required autocomplete="new-password">
+
+                <!-- Password Strength Meter -->
+                <div class="pw-meter" id="facultyPwMeter">
+                  <div class="pw-meter__bar">
+                    <div class="pw-meter__fill" id="facultyPwFill"></div>
+                  </div>
+                  <div class="pw-meter__info">
+                    <span class="pw-meter__label" id="facultyPwLabel">Strength: None</span>
+                    <span class="pw-meter__badge" id="facultyPwBadge">6+ chars, Aa, 123, !@#</span>
+                  </div>
+                  <ul class="pw-rules" id="facultyPwRules">
+                    <li id="rule-fac-len">✕ Min 6 characters</li>
+                    <li id="rule-fac-case">✕ Uppercase &amp; lowercase</li>
+                    <li id="rule-fac-num">✕ At least 1 number</li>
+                    <li id="rule-fac-special">✕ Special char (!@#$%^&amp;*)</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="facultyConfirmPassword">Confirm Password</label>
+                <input type="password" id="facultyConfirmPassword" name="confirmPassword"
+                  placeholder="Re-enter password" required>
+              </div>
+            </div>
+
+            <div class="grid-form__row grid-form__row--2">
+              <div class="field">
+                <label for="facultyGender">Gender</label>
+                <select id="facultyGender" name="gender" required>
+                  <option value="">Select</option>
+                  <option>Female</option>
+                  <option>Male</option>
+                  <option>Other</option>
+                  <option>Prefer not to say</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="facultyLastCourse">Highest Qualification</label>
+                <select id="facultyLastCourse" name="lastCourse" required>
+                  <option value="">Select Qualification</option>
+                  <option value="Bachelor's Degree">Bachelor's Degree</option>
+                  <option value="Master's Degree" selected>Master's Degree (M.Tech / M.E.)</option>
+                  <option value="Ph.D.">Doctorate (Ph.D.)</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
             </div>
-            <div class="field">
-              <label>Date of birth <span class="hint">(cannot be changed after setup)</span></label>
-              <input type="date" name="dob" id="studentDob">
-            </div>
-          </div>
+          </fieldset>
 
-          <div id="setupFacultyFields" hidden>
-            <h2>Faculty details</h2>
+          <fieldset>
+            <legend>Location &amp; Institute</legend>
+            <div class="grid-form__row grid-form__row--2">
+              <div class="field">
+                <label for="facultyState">State</label>
+                <select id="facultyState" name="state" required>
+                  <option value="Maharashtra" selected>Maharashtra</option>
+                  <option>Delhi</option>
+                  <option>Karnataka</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="facultyCity">City / District</label>
+                <input type="text" id="facultyCity" name="city" value="Pune" required>
+              </div>
+            </div>
+
+            <!-- 15 Pune Engineering Colleges -->
             <div class="field">
-              <label>Department</label>
-              <select name="facultyDepartment">
-                <option value="">Select department</option>
-                <option>Computer Science</option><option>Electronics</option>
-                <option>Mechanical</option><option>Civil</option>
-                <option>Robotics &amp; Automation</option><option>Commerce</option>
-                <option>Other</option>
+              <label for="facultyInstituteSelect">College / Institute (Pune)</label>
+              <select name="institute" id="facultyInstituteSelect" required>
+                <option value="">Select Pune Engineering College</option>
               </select>
             </div>
-            <div class="field">
-              <label class="toggle">
-                <input type="checkbox" id="tpoToggle" name="isTpo">
-                <span class="toggle__track"><span class="toggle__thumb"></span></span>
-                Are you a Training &amp; Placement Officer (TPO)?
-              </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Faculty Credentials</legend>
+            <div class="grid-form__row grid-form__row--2">
+              <div class="field">
+                <label>Faculty ID / Employee ID</label>
+                <input type="text" name="facultyId" placeholder="e.g. PICT-CS-402" required>
+              </div>
+              <div class="field">
+                <label>Department</label>
+                <select name="facultyDepartment" required>
+                  <option value="Computer Science" selected>Computer Science &amp; Engineering</option>
+                  <option value="Information Technology">Information Technology</option>
+                  <option value="Electronics">Electronics &amp; Telecommunication</option>
+                  <option value="Mechanical">Mechanical Engineering</option>
+                  <option value="Robotics & Automation">Robotics &amp; AI</option>
+                  <option value="Civil">Civil Engineering</option>
+                </select>
+              </div>
             </div>
-            <div class="field" id="tpoIdField" hidden>
-              <label>TPO ID</label>
-              <input type="text" name="tpoId">
-            </div>
-          </div>
+          </fieldset>
 
-          <div id="setupIndustryFields" hidden>
-            <h2>All set</h2>
-            <p class="auth-card__sub">Your organisation profile is ready. You can invite teammates later from Settings.</p>
-          </div>
-        </section>
+          <label class="checkbox checkbox--terms">
+            <input type="checkbox" name="terms" required checked>
+            I agree to the SetuSkill Academic Verification Terms.
+          </label>
 
-        <div class="setup-nav">
-          <button type="button" class="btn btn--outline" id="setupBackBtn" disabled>Back</button>
-          <button type="button" class="btn btn--primary" id="setupNextBtn">Continue</button>
-          <button type="submit" class="btn btn--primary" id="setupFinishBtn" hidden>Go to dashboard</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- VIEW: APP (main SPA shell, post-login)                        -->
-<!-- ============================================================ -->
-<section id="view-app" class="view app-shell">
-
-  <aside class="app-sidebar" id="appSidebar">
-    <div class="app-sidebar__top">
-      <a href="#" class="brand" data-nav="landing">
-        <span class="brand__mark" aria-hidden="true">
-          <svg viewBox="0 0 32 32" width="26" height="26">
-            <circle cx="16" cy="6" r="3.4" fill="var(--color-accent)"/>
-            <circle cx="6" cy="24" r="3.4" fill="var(--color-primary)"/>
-            <circle cx="26" cy="24" r="3.4" fill="var(--color-primary)"/>
-            <circle cx="16" cy="17" r="2.6" fill="var(--color-success)"/>
-          </svg>
-        </span>
-        <span class="brand__text">Setu<b>Skill</b></span>
-      </a>
-    </div>
-
-    <nav class="app-nav" aria-label="Dashboard">
-      <button class="app-nav__item is-active" data-section="dashboard">
-        <span class="app-nav__icon">🏠</span> Dashboard
-      </button>
-      <button class="app-nav__item" data-section="programmes">
-        <span class="app-nav__icon">📅</span> Programmes &amp; Events
-      </button>
-      <button class="app-nav__item" data-section="learn">
-        <span class="app-nav__icon">🎓</span> Learn &amp; Upskill
-      </button>
-      <button class="app-nav__item" data-section="assessment">
-        <span class="app-nav__icon">✅</span> Assessment
-      </button>
-      <button class="app-nav__item" data-section="articles">
-        <span class="app-nav__icon">📰</span> Articles
-      </button>
-      <button class="app-nav__item" data-section="help">
-        <span class="app-nav__icon">❓</span> Help
-      </button>
-    </nav>
-
-    <div class="app-sidebar__bottom">
-      <button class="app-nav__item app-nav__item--logout" id="logoutBtn">
-        <span class="app-nav__icon">↩</span> Log out
-      </button>
-    </div>
-  </aside>
-
-  <div class="app-body">
-    <header class="app-topbar">
-      <button class="hamburger hamburger--sidebar" id="sidebarToggleBtn" aria-label="Toggle sidebar">
-        <span></span><span></span><span></span>
-      </button>
-      <div class="app-topbar__search">
-        <input type="search" placeholder="Search courses, skills, articles…" id="globalSearchInput">
+          <button type="submit" class="btn btn--primary btn--block btn--lg">Create Faculty Account</button>
+        </form>
+        <p class="auth-switch">Already registered? <a href="#" data-switch-auth="login">Log in</a></p>
       </div>
-      <div class="app-topbar__actions">
-        <button class="icon-btn" aria-label="Notifications">🔔</button>
-        <div class="app-topbar__profile" id="topbarProfile">
-          <div class="avatar" id="topbarAvatar">S</div>
-          <div class="app-topbar__profile-meta">
-            <strong id="topbarName">—</strong>
-            <span id="topbarRole">—</span>
+
+      <!-- REGISTER: INDUSTRY -->
+      <div class="auth-card auth-card--wide" id="auth-register-industry" data-auth-card hidden>
+        <button type="button" class="back-link" data-switch-auth="role-select">← Change role</button>
+        <h2>Industry Partner Registration</h2>
+        <p class="auth-card__sub">Register your organization to post openings and discover verified talent.</p>
+
+        <form id="registerIndustryForm" class="grid-form" novalidate>
+          <fieldset>
+            <legend>Organization Details</legend>
+            <div class="field"><label>Company Name</label><input type="text" name="companyName"
+                placeholder="e.g. TechBridge Solutions Pvt. Ltd." required></div>
+            <div class="grid-form__row grid-form__row--2">
+              <div class="field"><label>Business Email</label><input type="email" name="businessEmail"
+                  placeholder="recruiter@company.com" required></div>
+              <div class="field"><label>Corporate ID (CIN / GST)</label><input type="text" name="corporateId"
+                  placeholder="U72200MH2020PTC340012" required></div>
+            </div>
+            <div class="grid-form__row grid-form__row--2">
+              <div class="field">
+                <label>Industry Sector</label>
+                <select name="sector" required>
+                  <option value="Information Technology" selected>Information Technology &amp; Services</option>
+                  <option>Manufacturing &amp; Automotive</option>
+                  <option>Finance &amp; FinTech</option>
+                  <option>Healthcare &amp; BioTech</option>
+                  <option>Consulting &amp; Analytics</option>
+                </select>
+              </div>
+              <div class="field"><label>Password</label><input type="password" name="password" required></div>
+            </div>
+          </fieldset>
+
+          <label class="checkbox checkbox--terms">
+            <input type="checkbox" name="terms" required checked>
+            I agree to the SetuSkill Industry Hiring Code of Conduct.
+          </label>
+
+          <button type="submit" class="btn btn--primary btn--block btn--lg">Create Industry Account</button>
+        </form>
+        <p class="auth-switch">Already registered? <a href="#" data-switch-auth="login">Log in</a></p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- VIEW: ONBOARDING PROFILE SETUP                               -->
+  <!-- ============================================================ -->
+  <section id="view-profile-setup" class="view">
+    <div class="setup-shell">
+      <aside class="setup-shell__aside">
+        <a href="#" class="brand" data-nav="landing">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="26" height="26">
+              <circle cx="16" cy="6" r="3.4" fill="var(--color-accent)" />
+              <circle cx="6" cy="24" r="3.4" fill="var(--color-primary)" />
+              <circle cx="26" cy="24" r="3.4" fill="var(--color-primary)" />
+              <circle cx="16" cy="17" r="2.6" fill="var(--color-success)" />
+            </svg>
+          </span>
+          <span class="brand__text">Setu<b>Skill</b></span>
+        </a>
+        <ol class="setup-steps" id="setupSteps">
+          <li class="is-active" data-step="1"><span>1</span>Photo &amp; Bio</li>
+          <li data-step="2"><span>2</span>Skill Mapping</li>
+          <li data-step="3"><span>3</span>Credentials</li>
+          <li data-step="4"><span>4</span>Department Details</li>
+        </ol>
+      </aside>
+
+      <div class="setup-shell__main">
+        <div class="setup-progress">
+          <div class="setup-progress__bar" id="setupProgressBar" style="width:25%"></div>
+        </div>
+
+        <form id="profileSetupForm">
+          <!-- STEP 1 -->
+          <section class="setup-step is-active" data-setup-step="1">
+            <h2>Profile Photo &amp; Professional Headline</h2>
+            <p class="auth-card__sub">This information is visible across peer connections and recruiters.</p>
+            <div class="photo-upload">
+              <div class="photo-upload__preview" id="photoPreview" aria-hidden="true">📷</div>
+              <div>
+                <label for="photoInput" class="btn btn--outline">Choose Photo</label>
+                <input type="file" id="photoInput" name="photo" accept="image/*" hidden>
+                <p class="hint">Upload a JPG or PNG avatar.</p>
+              </div>
+            </div>
+            <div class="field" style="margin-top:1.5rem;">
+              <label for="setupHeadline">Headline / Target Specialization</label>
+              <input type="text" id="setupHeadline" name="headline"
+                placeholder="e.g. Aspiring Full Stack & Cloud Developer | COEP '27">
+            </div>
+          </section>
+
+          <!-- STEP 2 -->
+          <section class="setup-step" data-setup-step="2">
+            <h2>Select Your Skills</h2>
+            <p class="auth-card__sub">Select current skills to calculate Job Match % and skills you want to upskill.</p>
+
+            <div class="field">
+              <label>Skills you currently have (For Job Matcher)</label>
+              <input type="text" id="skillsHaveSearch" placeholder="Search skills (e.g. Python, React, SQL)..."
+                class="skill-search">
+              <div class="skill-multiselect" id="skillsHaveGrid"></div>
+            </div>
+
+            <div class="field">
+              <label>Skills you want to learn next</label>
+              <input type="text" id="skillsLearnSearch" placeholder="Search skills (e.g. AWS, Machine Learning)..."
+                class="skill-search">
+              <div class="skill-multiselect" id="skillsLearnGrid"></div>
+            </div>
+          </section>
+
+          <!-- STEP 3 -->
+          <section class="setup-step" data-setup-step="3">
+            <h2>Upload Academic Qualifications</h2>
+            <p class="auth-card__sub">Upload certificates, marksheets, or previous degree transcripts.</p>
+            <div class="field">
+              <label>Upload Degrees &amp; Documents</label>
+              <input type="file" name="qualifications" multiple>
+              <p class="hint">Supported formats: PDF, JPG, PNG.</p>
+            </div>
+            <div class="field" id="qualificationsList"></div>
+          </section>
+
+          <!-- STEP 4 -->
+          <section class="setup-step" data-setup-step="4">
+            <div id="setupStudentFields" hidden>
+              <h2>Department &amp; Batch Details</h2>
+              <div class="grid-form__row grid-form__row--2">
+                <div class="field">
+                  <label>Branch / Specialization</label>
+                  <select name="branch">
+                    <option value="Computer Science" selected>Computer Science &amp; Engineering</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Electronics">Electronics &amp; Telecommunication</option>
+                    <option value="Mechanical">Mechanical Engineering</option>
+                    <option value="Robotics & Automation">Robotics &amp; AI</option>
+                    <option value="Civil">Civil Engineering</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label>Current Academic Year</label>
+                  <select name="currentYear">
+                    <option value="1st Year">1st Year (FE)</option>
+                    <option value="2nd Year">2nd Year (SE)</option>
+                    <option value="3rd Year" selected>3rd Year (TE)</option>
+                    <option value="4th Year">4th Year (BE)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field">
+                <label>Date of Birth <span class="hint">(Locked after verification)</span></label>
+                <input type="date" name="dob" id="studentDob" value="2003-06-15">
+              </div>
+            </div>
+
+            <div id="setupFacultyFields" hidden>
+              <h2>Faculty Designation</h2>
+              <div class="field">
+                <label>Assigned Department</label>
+                <select name="facultyDepartment">
+                  <option value="Computer Science" selected>Computer Science</option>
+                  <option value="Information Technology">Information Technology</option>
+                  <option value="Electronics">Electronics</option>
+                  <option value="Mechanical">Mechanical</option>
+                </select>
+              </div>
+              <div class="field">
+                <label class="toggle">
+                  <input type="checkbox" id="tpoToggle" name="isTpo">
+                  <span class="toggle__track"><span class="toggle__thumb"></span></span>
+                  Are you a Training &amp; Placement Officer (TPO)?
+                </label>
+              </div>
+              <div class="field" id="tpoIdField" hidden>
+                <label>TPO Reference ID</label>
+                <input type="text" name="tpoId" placeholder="TPO-2026-REG">
+              </div>
+            </div>
+
+            <div id="setupIndustryFields" hidden>
+              <h2>Partner Profile Ready</h2>
+              <p class="auth-card__sub">You can post jobs and review verified applicants from your dashboard.</p>
+            </div>
+          </section>
+
+          <div class="setup-nav">
+            <button type="button" class="btn btn--outline" id="setupBackBtn" disabled>Back</button>
+            <button type="button" class="btn btn--primary" id="setupNextBtn">Continue</button>
+            <button type="submit" class="btn btn--primary" id="setupFinishBtn" hidden>Go to Dashboard</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- VIEW: MAIN APPLICATION (MODULE 3: TOP NAVIGATION BAR OVERHAUL)-->
+  <!-- ============================================================ -->
+  <section id="view-app" class="view app-view">
+
+    <!-- FIXED TOP NAVIGATION HEADER (Coursera / LinkedIn Style) -->
+    <header class="app-top-nav">
+      <div class="app-top-nav__inner">
+        <!-- Left: Brand Logo & Search -->
+        <div class="app-top-nav__left">
+          <a href="#" class="brand" data-nav="landing">
+            <span class="brand__mark" aria-hidden="true">
+              <svg viewBox="0 0 32 32" width="28" height="28">
+                <circle cx="16" cy="6" r="3.4" fill="var(--color-accent)" />
+                <circle cx="6" cy="24" r="3.4" fill="var(--color-primary)" />
+                <circle cx="26" cy="24" r="3.4" fill="var(--color-primary)" />
+                <circle cx="16" cy="17" r="2.6" fill="var(--color-success)" />
+                <path d="M16 9.4 16 14.6 M13.8 18.6 8.3 21.6 M18.2 18.6 23.7 21.6" stroke="rgba(255,255,255,.6)"
+                  stroke-width="1.4" fill="none" stroke-linecap="round" />
+              </svg>
+            </span>
+            <span class="brand__text">Setu<b>Skill</b></span>
+          </a>
+
+          <div class="app-top-nav__search">
+            <span class="search-icon">🔍</span>
+            <input type="search" id="globalSearchInput" placeholder="Search skills, jobs, courses, connections...">
+          </div>
+        </div>
+
+        <!-- Center: 7 Navigation Tabs -->
+        <nav class="app-top-nav__tabs" aria-label="Main App Navigation">
+          <button class="nav-tab is-active" data-section="dashboard">
+            <span class="nav-tab__icon">🏠</span>
+            <span class="nav-tab__label">Dashboard</span>
+          </button>
+          <button class="nav-tab" data-section="learn">
+            <span class="nav-tab__icon">🎓</span>
+            <span class="nav-tab__label">Learn &amp; Upskill</span>
+          </button>
+          <button class="nav-tab" data-section="jobs">
+            <span class="nav-tab__icon">💼</span>
+            <span class="nav-tab__label">Jobs</span>
+          </button>
+          <button class="nav-tab" data-section="connections">
+            <span class="nav-tab__icon">👥</span>
+            <span class="nav-tab__label">Connections</span>
+          </button>
+          <button class="nav-tab" data-section="explore">
+            <span class="nav-tab__icon">📰</span>
+            <span class="nav-tab__label">Explore</span>
+          </button>
+          <button class="nav-tab" data-section="programmes">
+            <span class="nav-tab__icon">📅</span>
+            <span class="nav-tab__label">Programmes &amp; Events</span>
+          </button>
+          <button class="nav-tab" data-section="help">
+            <span class="nav-tab__icon">❓</span>
+            <span class="nav-tab__label">Help</span>
+          </button>
+        </nav>
+
+        <!-- Right: Direct Message Launcher, Notifications & User Avatar Dropdown -->
+        <div class="app-top-nav__right">
+          <!-- Direct Message Quick Button -->
+          <button class="icon-nav-btn" id="openChatDrawerBtn" title="Direct Messaging Drawer">
+            <span>💬</span>
+            <span class="nav-badge" id="chatUnreadBadge">1</span>
+          </button>
+
+          <!-- Notifications -->
+          <button class="icon-nav-btn" id="notificationsBtn" title="Notifications">
+            <span>🔔</span>
+            <span class="nav-badge">3</span>
+          </button>
+
+          <!-- User Profile Avatar & Dropdown -->
+          <div class="user-menu-wrap" id="userMenuWrap">
+            <button class="user-avatar-btn" id="userAvatarBtn" aria-label="User Profile Menu">
+              <div class="avatar avatar--sm" id="topbarAvatar">P</div>
+              <div class="user-avatar-meta">
+                <span class="user-avatar-name" id="topbarName">Priya Sharma</span>
+                <span class="user-avatar-role" id="topbarRole">Student</span>
+              </div>
+              <span class="user-avatar-caret">▾</span>
+            </button>
+
+            <!-- Dropdown Menu -->
+            <div class="user-dropdown-menu" id="userDropdownMenu" hidden>
+              <div class="user-dropdown-header">
+                <strong id="dropdownFullName">Priya Sharma</strong>
+                <span id="dropdownSub">COEP Technological University</span>
+              </div>
+              <hr>
+              <button class="dropdown-item" id="menuOpenProfile">👤 My Profile &amp; Badges</button>
+              <button class="dropdown-item" id="menuOpenCertificates">📜 My Verified Certificates</button>
+              <button class="dropdown-item" id="menuOpenFacultyPortal" hidden>🏛️ Faculty Management Portal</button>
+              <hr>
+              <button class="dropdown-item dropdown-item--danger" id="logoutBtn">↩ Sign Out</button>
+            </div>
           </div>
         </div>
       </div>
     </header>
 
-    <main class="app-main">
+    <!-- MAIN APP BODY -->
+    <main class="app-content-container">
 
-      <!-- DASHBOARD -->
+      <!-- ============================================================ -->
+      <!-- SECTION 1: DASHBOARD TAB                                     -->
+      <!-- ============================================================ -->
       <section class="app-section is-active" data-app-section="dashboard">
         <div class="section-heading">
-          <h1>Welcome back, <span id="dashGreetName">there</span> 👋</h1>
-          <p>Here's where your skill map stands today.</p>
+          <div>
+            <h1>Welcome back, <span id="dashGreetName">Priya</span> 👋</h1>
+            <p id="dashSubTitle">Here is where your verified skill ledger and career opportunities stand today.</p>
+          </div>
+          <div class="dash-quick-actions">
+            <button class="btn btn--outline" id="dashQuickLearnBtn">🎓 Upskill Tracks</button>
+            <button class="btn btn--primary" id="dashQuickJobsBtn">💼 Skill Match Jobs</button>
+          </div>
         </div>
 
+        <!-- STAT CARDS -->
         <div class="stat-cards">
           <div class="stat-card">
-            <span class="stat-card__label">Courses joined</span>
+            <span class="stat-card__icon">🎓</span>
+            <span class="stat-card__label">Courses Enrolled</span>
             <span class="stat-card__value" id="statCoursesJoined">0</span>
           </div>
           <div class="stat-card">
-            <span class="stat-card__label">Verified skills</span>
+            <span class="stat-card__icon">✓</span>
+            <span class="stat-card__label">Verified Skills</span>
             <span class="stat-card__value" id="statVerifiedSkills">0</span>
           </div>
           <div class="stat-card">
-            <span class="stat-card__label">Unverified skills</span>
-            <span class="stat-card__value" id="statUnverifiedSkills">0</span>
+            <span class="stat-card__icon">📜</span>
+            <span class="stat-card__label">Certificates Issued</span>
+            <span class="stat-card__value" id="statCertificatesCount">0</span>
           </div>
           <div class="stat-card">
-            <span class="stat-card__label">Overall completion</span>
+            <span class="stat-card__icon">🎯</span>
+            <span class="stat-card__label">Skill Match Rating</span>
             <span class="stat-card__value" id="statOverallCompletion">0%</span>
           </div>
         </div>
 
+        <!-- DASHBOARD PANELS -->
         <div class="dash-grid">
           <div class="panel">
-            <h3>Course progress</h3>
+            <div class="panel__head">
+              <h3>Interactive Course Progress</h3>
+              <a href="#" class="link-sm" data-jump-tab="learn">Browse all →</a>
+            </div>
             <div id="courseProgressList" class="progress-list"><!-- populated by app.js --></div>
           </div>
 
           <div class="panel">
-            <h3>Skill badges</h3>
+            <div class="panel__head">
+              <h3>Verified Skill Badges</h3>
+              <span class="badge badge--verified" id="badgeTotalSummary">3 Verified</span>
+            </div>
             <div id="skillBadgeList" class="badge-list"><!-- populated by app.js --></div>
           </div>
 
           <div class="panel panel--wide">
-            <h3>Activity — last 12 weeks</h3>
-            <div id="activityHeatmap" class="heatmap"><!-- populated by app.js --></div>
-            <div class="heatmap-legend">
-              <span>Less</span>
-              <span class="heat-cell heat-0"></span>
-              <span class="heat-cell heat-1"></span>
-              <span class="heat-cell heat-2"></span>
-              <span class="heat-cell heat-3"></span>
-              <span class="heat-cell heat-4"></span>
-              <span>More</span>
+            <div class="panel__head">
+              <h3>Learning Activity Heatmap — Last 12 Weeks</h3>
+              <div class="heatmap-legend">
+                <span>Less</span>
+                <span class="heat-cell heat-0"></span>
+                <span class="heat-cell heat-1"></span>
+                <span class="heat-cell heat-2"></span>
+                <span class="heat-cell heat-3"></span>
+                <span class="heat-cell heat-4"></span>
+                <span>More</span>
+              </div>
             </div>
+            <div id="activityHeatmap" class="heatmap"><!-- populated by app.js --></div>
           </div>
         </div>
       </section>
 
-      <!-- PROGRAMMES & EVENTS -->
-      <section class="app-section" data-app-section="programmes">
-        <div class="section-heading">
-          <h1>Programmes &amp; Events</h1>
-          <p>Workshops, seminars and industry talks happening near you.</p>
-        </div>
-        <div id="eventsList" class="events-list"><!-- populated by app.js --></div>
-      </section>
-
-      <!-- LEARN & UPSKILL -->
+      <!-- ============================================================ -->
+      <!-- SECTION 2: LEARN & UPSKILL TAB (MODULE 6: INTERACTIVE COURSES)-->
+      <!-- ============================================================ -->
       <section class="app-section" data-app-section="learn">
         <div class="section-heading">
-          <h1>Learn &amp; Upskill</h1>
-          <p>Ten core tracks to strengthen your skill map.</p>
+          <div>
+            <h1>Learn &amp; Upskill</h1>
+            <p>Interactive curriculum with readable modular lessons, checkpoints, and verified assessments.</p>
+          </div>
         </div>
+
+        <!-- Course Tracks Grid -->
         <div id="courseGrid" class="course-grid"><!-- populated by app.js --></div>
       </section>
 
-      <!-- ASSESSMENT -->
-      <section class="app-section" data-app-section="assessment">
+      <!-- ============================================================ -->
+      <!-- SECTION 3: JOBS & INTERNSHIPS (MODULE 5: SKILL MATCHER ENGINE)-->
+      <!-- ============================================================ -->
+      <section class="app-section" data-app-section="jobs">
         <div class="section-heading">
-          <h1>Assessment</h1>
-          <p>Pick a skill, take a short test, and add a verified badge to your profile.</p>
-        </div>
-
-        <div id="assessmentPicker" class="assessment-picker"><!-- populated by app.js --></div>
-
-        <div id="assessmentQuiz" class="assessment-quiz" hidden>
-          <div class="assessment-quiz__header">
-            <h3 id="quizSkillTitle">Skill test</h3>
-            <span class="assessment-quiz__progress" id="quizProgressLabel">Question 1 of 10</span>
-          </div>
-          <div class="quiz-progress"><div class="quiz-progress__bar" id="quizProgressBar" style="width:10%"></div></div>
-          <div class="assessment-quiz__body" id="quizBody"><!-- populated by app.js --></div>
-          <div class="assessment-quiz__nav">
-            <button class="btn btn--outline" id="quizPrevBtn">Previous</button>
-            <button class="btn btn--primary" id="quizNextBtn">Next</button>
-            <button class="btn btn--primary" id="quizSubmitBtn" hidden>Submit test</button>
+          <div>
+            <h1>Jobs &amp; Internships</h1>
+            <p>Real-time opening opportunities ranked by your verified skill match percentage.</p>
           </div>
         </div>
 
-        <div id="assessmentResult" class="assessment-result" hidden></div>
-      </section>
-
-      <!-- ARTICLES -->
-      <section class="app-section" data-app-section="articles">
-        <div class="section-heading">
-          <h1>Articles</h1>
-          <p>Announcements and news from institutes and companies.</p>
+        <!-- Sub-Navigation for Jobs -->
+        <div class="jobs-sub-nav">
+          <button class="jobs-sub-tab is-active" data-jobs-sub="all">All Jobs &amp; Internships (<span
+              id="jobsCountAll">0</span>)</button>
+          <button class="jobs-sub-tab" data-jobs-sub="applied">Applied Jobs (<span
+              id="jobsCountApplied">0</span>)</button>
+          <button class="jobs-sub-tab" data-jobs-sub="accepted">Accepted Proposals (<span
+              id="jobsCountAccepted">0</span>)</button>
         </div>
-        <div id="articlesFeed" class="articles-feed"><!-- populated by app.js --></div>
+
+        <!-- Container for Job Listings -->
+        <div id="jobsContainer" class="jobs-container">
+          <!-- populated by app.js -->
+        </div>
       </section>
 
-      <!-- HELP -->
+      <!-- ============================================================ -->
+      <!-- SECTION 4: CONNECTIONS TAB (MODULE 4: DIRECTORY & CHAT)      -->
+      <!-- ============================================================ -->
+      <section class="app-section" data-app-section="connections">
+        <div class="section-heading">
+          <div>
+            <h1>Connections Directory</h1>
+            <p>Connect and collaborate with engineering peers, faculty mentors, and industry recruiters across Pune.</p>
+          </div>
+          <div class="connections-filter-wrap">
+            <input type="search" id="connectionsSearchInput" placeholder="Filter by name, college, or skill..."
+              class="connections-search">
+          </div>
+        </div>
+
+        <!-- Role Filter Pills -->
+        <div class="filter-pills" id="connectionsRoleFilters">
+          <button class="pill is-active" data-role-filter="all">All Profiles</button>
+          <button class="pill" data-role-filter="student">Students</button>
+          <button class="pill" data-role-filter="faculty">Faculty &amp; Mentors</button>
+          <button class="pill" data-role-filter="industry">Industry Recruiters</button>
+        </div>
+
+        <!-- Grid of Connections -->
+        <div id="connectionsGrid" class="connections-grid">
+          <!-- populated by app.js -->
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- SECTION 5: EXPLORE TAB (MODULE 8: SOCIAL FEED & POSTS)       -->
+      <!-- ============================================================ -->
+      <section class="app-section" data-app-section="explore">
+        <div class="section-heading">
+          <div>
+            <h1>Explore Community</h1>
+            <p>Announcements, technical milestones, and placement highlights from institutes and recruiters.</p>
+          </div>
+          <button class="btn btn--primary" id="openCreatePostBtn">+ Share Update</button>
+        </div>
+
+        <!-- Feed Container -->
+        <div class="explore-layout">
+          <div id="postsFeed" class="posts-feed"><!-- populated by app.js --></div>
+
+          <aside class="explore-sidebar">
+            <div class="panel">
+              <h4>Trending Pune Campuses</h4>
+              <ul class="trending-list">
+                <li><strong>#COEP_Tech</strong> <span>142 updates</span></li>
+                <li><strong>#PICT_PlacementDrive</strong> <span>98 updates</span></li>
+                <li><strong>#VIT_Hackathon2026</strong> <span>76 updates</span></li>
+                <li><strong>#SetuSkillVerified</strong> <span>310 badges</span></li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- SECTION 6: PROGRAMMES & EVENTS (MODULE 8: EVENT HOSTING)     -->
+      <!-- ============================================================ -->
+      <section class="app-section" data-app-section="programmes">
+        <div class="section-heading">
+          <div>
+            <h1>Programmes &amp; Events</h1>
+            <p>Workshops, seminars, hackathons, and placement drives happening across Pune institutes.</p>
+          </div>
+          <button class="btn btn--primary" id="openHostEventBtn">+ Host Event / Workshop</button>
+        </div>
+
+        <div id="eventsList" class="events-list"><!-- populated by app.js --></div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- SECTION 7: HELP & FAQs                                        -->
+      <!-- ============================================================ -->
       <section class="app-section" data-app-section="help">
         <div class="section-heading">
-          <h1>Help</h1>
-          <p>Answers to common questions, plus official resources.</p>
+          <div>
+            <h1>Help &amp; Documentation</h1>
+            <p>Frequently asked questions about skill verification, certificates, and job applications.</p>
+          </div>
         </div>
 
         <div class="help-grid">
           <div class="panel">
-            <h3>Frequently asked questions</h3>
+            <h3>Frequently Asked Questions</h3>
             <div id="faqList" class="faq-list"><!-- populated by app.js --></div>
           </div>
+
           <div class="panel">
-            <h3>Government education portals</h3>
+            <h3>Official Portals &amp; Accreditation</h3>
             <ul class="link-list">
-              <li><a href="https://www.mygov.in/campaigns/skill-india/" target="_blank" rel="noopener">Skill India</a></li>
-              <li><a href="https://www.aicte-india.org/" target="_blank" rel="noopener">AICTE</a></li>
-              <li><a href="https://www.ugc.gov.in/" target="_blank" rel="noopener">UGC</a></li>
-              <li><a href="https://www.education.gov.in/" target="_blank" rel="noopener">Ministry of Education</a></li>
-              <li><a href="https://www.nsdcindia.org/" target="_blank" rel="noopener">NSDC</a></li>
+              <li><a href="https://www.mygov.in/campaigns/skill-india/" target="_blank" rel="noopener">Skill India
+                  Digital Portal ↗</a></li>
+              <li><a href="https://www.aicte-india.org/" target="_blank" rel="noopener">AICTE National Portal ↗</a></li>
+              <li><a href="https://www.education.gov.in/" target="_blank" rel="noopener">Ministry of Education, Govt of
+                  India ↗</a></li>
+              <li><a href="https://www.nsdcindia.org/" target="_blank" rel="noopener">National Skill Development Corp
+                  (NSDC) ↗</a></li>
             </ul>
           </div>
         </div>
       </section>
 
     </main>
-  </div>
-</section>
+  </section>
 
-<script src="backend.js"></script>
-<script src="auth.js"></script>
-<script src="app.js"></script>
+  <!-- ============================================================ -->
+  <!-- FLOATING ACTION BUTTON (MODULE 8: FAB "+")                   -->
+  <!-- ============================================================ -->
+  <button class="fab-btn" id="floatingActionBtn" title="Create Post or Host Event" aria-label="Create Post">
+    <span>+</span>
+  </button>
+
+  <!-- ============================================================ -->
+  <!-- MODAL: INTERACTIVE COURSE LESSON VIEWER (MODULE 6)            -->
+  <!-- ============================================================ -->
+  <div class="modal-backdrop" id="courseLessonModal" hidden>
+    <div class="modal-window modal-window--wide">
+      <div class="modal-header">
+        <div class="modal-header__title">
+          <span class="course-icon-badge" id="modalCourseIcon">🐍</span>
+          <div>
+            <h2 id="modalCourseTitle">Python Programming</h2>
+            <span class="modal-sub" id="modalCourseProvider">SetuSkill Academy · 3 Interactive Modules</span>
+          </div>
+        </div>
+        <button class="modal-close" id="closeCourseModalBtn" aria-label="Close">✕</button>
+      </div>
+
+      <div class="course-modal-body">
+        <!-- Left sidebar: module list -->
+        <div class="course-modules-nav" id="courseModulesNav">
+          <!-- populated by app.js -->
+        </div>
+
+        <!-- Right reading content -->
+        <div class="course-module-content">
+          <div class="module-content-scroll" id="moduleContentArea">
+            <!-- populated by app.js -->
+          </div>
+
+          <div class="module-action-bar">
+            <button class="btn btn--outline" id="prevLessonBtn">← Previous Lesson</button>
+            <button class="btn btn--primary" id="completeLessonBtn">✓ Complete Lesson (+33%)</button>
+            <button class="btn btn--success" id="takeAssessmentBtn" hidden>🎯 Take Skill Assessment</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- MODAL: SKILL ASSESSMENT QUIZ (≥70% THRESHOLD)                -->
+  <!-- ============================================================ -->
+  <div class="modal-backdrop" id="assessmentModal" hidden>
+    <div class="modal-window">
+      <div class="modal-header">
+        <div>
+          <h2 id="quizSkillTitle">Skill Assessment</h2>
+          <span class="modal-sub" id="quizProgressLabel">Question 1 of 10 · Pass score: 70%</span>
+        </div>
+        <button class="modal-close" id="closeQuizModalBtn" aria-label="Close">✕</button>
+      </div>
+
+      <div class="quiz-modal-body">
+        <div class="quiz-progress">
+          <div class="quiz-progress__bar" id="quizProgressBar" style="width:10%"></div>
+        </div>
+
+        <div id="quizBody" class="quiz-body-wrap">
+          <!-- populated by app.js -->
+        </div>
+
+        <div class="assessment-quiz__nav">
+          <button class="btn btn--outline" id="quizPrevBtn" disabled>Previous</button>
+          <button class="btn btn--primary" id="quizNextBtn">Next Question</button>
+          <button class="btn btn--success" id="quizSubmitBtn" hidden>Submit Assessment</button>
+        </div>
+
+        <div id="assessmentResult" class="assessment-result" hidden></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- MODAL: CERTIFICATE OF COMPLETION GENERATOR (MODULE 6)        -->
+  <!-- ============================================================ -->
+  <div class="modal-backdrop" id="certificateModal" hidden>
+    <div class="modal-window modal-window--cert">
+      <div class="modal-header no-print">
+        <h2>Verified Skill Certificate</h2>
+        <button class="modal-close" id="closeCertModalBtn" aria-label="Close">✕</button>
+      </div>
+
+      <div class="certificate-container" id="certificatePrintable">
+        <div class="cert-border">
+          <div class="cert-inner">
+            <div class="cert-header">
+              <div class="cert-logo">Setu<b>Skill</b></div>
+              <p class="cert-subtitle">National Skill Mapping &amp; Verification Council</p>
+            </div>
+
+            <div class="cert-title">Certificate of Completion</div>
+            <p class="cert-present">This is proudly presented to</p>
+
+            <div class="cert-name" id="certStudentName">Priya Sharma</div>
+
+            <p class="cert-desc">for successfully demonstrating technical proficiency and passing the accredited
+              examination for</p>
+
+            <div class="cert-course" id="certCourseTitle">Python Programming Mastery</div>
+
+            <div class="cert-meta-row">
+              <div>
+                <span class="cert-label">Assessment Score</span>
+                <strong id="certScore">90% (Distinction)</strong>
+              </div>
+              <div>
+                <span class="cert-label">Date Issued</span>
+                <strong id="certIssueDate">28 Aug 2026</strong>
+              </div>
+              <div>
+                <span class="cert-label">Unique Verification ID</span>
+                <code id="certVerificationId">SS-CERT-2026-X89J2A</code>
+              </div>
+            </div>
+
+            <div class="cert-footer">
+              <div class="cert-seal">
+                <div class="cert-seal-inner">★ VERIFIED ★<br>SETUSKILL</div>
+              </div>
+              <div class="cert-sig">
+                <span class="sig-line">Director of Academic Verification</span>
+                <small>SetuSkill National Consortium</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-actions no-print">
+        <button class="btn btn--outline" id="printCertBtn">🖨️ Print / Download PDF</button>
+        <button class="btn btn--primary" id="viewCertInProfileBtn">View in Profile Gallery</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- MODAL: USER PROFILE & CERTIFICATES GALLERY (MODULE 6)        -->
+  <!-- ============================================================ -->
+  <div class="modal-backdrop" id="profileModal" hidden>
+    <div class="modal-window modal-window--wide">
+      <div class="modal-header">
+        <h2>Student Profile &amp; Verified Credentials</h2>
+        <button class="modal-close" id="closeProfileModalBtn" aria-label="Close">✕</button>
+      </div>
+
+      <div class="profile-modal-body">
+        <!-- Profile Header / Banner -->
+        <div class="profile-hero">
+          <div class="avatar avatar--lg" id="profileModalAvatar">P</div>
+          <div class="profile-hero__meta">
+            <h3 id="profileModalName">Priya Sharma</h3>
+            <p class="profile-headline" id="profileModalHeadline">Aspiring Full Stack Engineer | COEP Technological
+              University</p>
+            <div class="profile-tags" id="profileModalTags">
+              <span class="badge badge--primary" id="profileModalRole">Student</span>
+              <span class="badge badge--outline" id="profileModalCollege">COEP Technological University</span>
+              <span class="badge badge--outline" id="profileModalBranch">Computer Science · 3rd Year</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Profile Tabs -->
+        <div class="profile-tabs">
+          <button class="profile-tab is-active" data-ptab="overview">Overview &amp; Skills</button>
+          <button class="profile-tab" data-ptab="certificates">Certificates Gallery (<span
+              id="profileCertCount">0</span>)</button>
+          <button class="profile-tab" data-ptab="qualifications">Uploaded Documents</button>
+        </div>
+
+        <!-- Profile Tab 1: Overview -->
+        <div class="ptab-content is-active" id="ptab-overview">
+          <div class="panel" style="margin-bottom:1rem;">
+            <h4>Verified Skills (Accredited)</h4>
+            <div id="profileVerifiedSkillsList" class="badge-list"></div>
+          </div>
+          <div class="panel">
+            <h4>Target Skills (Learning Roadmap)</h4>
+            <div id="profileLearnSkillsList" class="badge-list"></div>
+          </div>
+        </div>
+
+        <!-- Profile Tab 2: Certificates -->
+        <div class="ptab-content" id="ptab-certificates" hidden>
+          <div id="profileCertificatesGallery" class="certs-gallery">
+            <!-- populated by app.js -->
+          </div>
+        </div>
+
+        <!-- Profile Tab 3: Documents -->
+        <div class="ptab-content" id="ptab-qualifications" hidden>
+          <div id="profileDocsList" class="docs-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- DRAWER: DIRECT MESSAGING CHAT DRAWER (MODULE 4)              -->
+  <!-- ============================================================ -->
+  <div class="chat-drawer-backdrop" id="chatDrawerBackdrop" hidden>
+    <div class="chat-drawer" id="chatDrawer">
+      <div class="chat-drawer__header">
+        <div class="chat-drawer__title">
+          <span>💬 Direct Messages</span>
+        </div>
+        <button class="chat-drawer__close" id="closeChatDrawerBtn" aria-label="Close Chat">✕</button>
+      </div>
+
+      <div class="chat-drawer__body">
+        <!-- Left contact selector -->
+        <div class="chat-contacts" id="chatContactsList">
+          <!-- populated by app.js -->
+        </div>
+
+        <!-- Right chat thread -->
+        <div class="chat-thread-wrap">
+          <div class="chat-active-header" id="chatActiveHeader">
+            <div class="avatar avatar--sm" id="chatPartnerAvatar">AM</div>
+            <div>
+              <strong id="chatPartnerName">Dr. Arjun Mehta</strong>
+              <small id="chatPartnerRole">Faculty · PICT Pune</small>
+            </div>
+          </div>
+
+          <div class="chat-messages-container" id="chatMessagesContainer">
+            <!-- populated by app.js -->
+          </div>
+
+          <form class="chat-input-bar" id="chatInputForm">
+            <input type="text" id="chatTextInput" placeholder="Type a message..." required autocomplete="off">
+            <button type="submit" class="btn btn--primary">Send</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- MODAL: FACULTY ASSESSMENT BUILDER (MODULE 7)                 -->
+  <!-- ============================================================ -->
+  <div class="modal-backdrop" id="facultyQuizModal" hidden>
+    <div class="modal-window">
+      <div class="modal-header">
+        <div>
+          <h2>Upload Custom Assessment</h2>
+          <span class="modal-sub">Add a quiz question to the global student assessment pool</span>
+        </div>
+        <button class="modal-close" id="closeFacultyQuizModalBtn" aria-label="Close">✕</button>
+      </div>
+
+      <form id="facultyQuizForm" class="grid-form" style="padding:1.5rem;" novalidate>
+        <div class="field">
+          <label>Course / Domain Track</label>
+          <select name="courseId" id="facultyCourseSelect" required>
+            <option value="python">Python Programming</option>
+            <option value="htmlcss">Web Development (HTML/CSS/JS)</option>
+            <option value="cpp">Data Structures in C++</option>
+            <option value="java">Java Essentials</option>
+            <option value="mysql">Database Design with MySQL</option>
+            <option value="cybersecurity">Cybersecurity Basics</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Question Text</label>
+          <textarea name="questionText" rows="2"
+            placeholder="e.g. Which algorithm provides the shortest path in a weighted graph?" required></textarea>
+        </div>
+
+        <div class="grid-form__row grid-form__row--2">
+          <div class="field"><label>Option A</label><input type="text" name="optionA" placeholder="Option A" required>
+          </div>
+          <div class="field"><label>Option B</label><input type="text" name="optionB" placeholder="Option B" required>
+          </div>
+        </div>
+
+        <div class="grid-form__row grid-form__row--2">
+          <div class="field"><label>Option C</label><input type="text" name="optionC" placeholder="Option C" required>
+          </div>
+          <div class="field"><label>Option D</label><input type="text" name="optionD" placeholder="Option D" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Correct Answer</label>
+          <select name="correctOption" required>
+            <option value="0">Option A</option>
+            <option value="1">Option B</option>
+            <option value="2">Option C</option>
+            <option value="3">Option D</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--block">Publish to Student Assessment Pool</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- MODAL: CREATE POST / SHARE UPDATE (MODULE 8)                  -->
+  <!-- ============================================================ -->
+  <div class="modal-backdrop" id="createPostModal" hidden>
+    <div class="modal-window">
+      <div class="modal-header">
+        <h2>Share Community Update</h2>
+        <button class="modal-close" id="closeCreatePostModalBtn" aria-label="Close">✕</button>
+      </div>
+
+      <form id="createPostForm" class="grid-form" style="padding:1.5rem;" novalidate>
+        <div class="field">
+          <label>Post Title</label>
+          <input type="text" name="postTitle" placeholder="e.g. Secured 1st place in Pune Inter-Collegiate Hackathon!"
+            required>
+        </div>
+        <div class="field">
+          <label>Content</label>
+          <textarea name="postContent" rows="4"
+            placeholder="Share technical insights, placement news, or project achievements..." required></textarea>
+        </div>
+        <div class="field">
+          <label>Location</label>
+          <input type="text" name="postLocation" placeholder="e.g. COEP Campus, Pune">
+        </div>
+        <button type="submit" class="btn btn--primary btn--block">Post to Community Feed</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- MODAL: HOST EVENT / WORKSHOP (MODULE 8)                      -->
+  <!-- ============================================================ -->
+  <div class="modal-backdrop" id="hostEventModal" hidden>
+    <div class="modal-window">
+      <div class="modal-header">
+        <h2>Host Community Workshop or Drive</h2>
+        <button class="modal-close" id="closeHostEventModalBtn" aria-label="Close">✕</button>
+      </div>
+
+      <form id="hostEventForm" class="grid-form" style="padding:1.5rem;" novalidate>
+        <div class="field">
+          <label>Event Title</label>
+          <input type="text" name="eventTitle" placeholder="e.g. Hands-On Cloud & Docker Bootcamp" required>
+        </div>
+        <div class="grid-form__row grid-form__row--2">
+          <div class="field">
+            <label>Event Type</label>
+            <select name="eventType" required>
+              <option>Workshop</option>
+              <option>Seminar</option>
+              <option>Hackathon</option>
+              <option>Placement Drive</option>
+              <option>Expert Talk</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Date</label>
+            <input type="date" name="eventDate" required>
+          </div>
+        </div>
+        <div class="field">
+          <label>Location / Venue</label>
+          <input type="text" name="eventLocation" placeholder="e.g. PICT Main Auditorium, Pune or Online Live Stream"
+            required>
+        </div>
+        <div class="field">
+          <label>Description</label>
+          <textarea name="eventDescription" rows="3"
+            placeholder="Overview of the workshop agenda and speaker credentials..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary btn--block">Publish Event to Calendar</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="backend.js"></script>
+  <script src="auth.js"></script>
+  <script src="app.js"></script>
 </body>
+
 </html>
