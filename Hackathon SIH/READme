@@ -1,0 +1,170 @@
+Stage 1: 
+Role & Objective
+You are an Expert Principal Full-Stack Engineer. Your task is to build a high-quality, fully functional Single-Page Application (SPA) prototype for a Smart India Hackathon (SIH) project. The platform is a Centralized Academia–Industry Collaboration & Skill Mapping Portal.
+Tech Stack & Constraints
+⚬	Strictly Vanilla: HTML5, CSS3, and JavaScript only. No React, no Tailwind, no external frameworks, no backend server.
+⚬	State Management: Use browser localStorage to simulate a database.
+⚬	File Structure: Exactly 5 files: index.html, style.css, backend.js, auth.js, and app.js.
+⚬	UI/UX Theme: Clean, neat, professional, non-flashy (slate/light color palette). Take layout inspiration from Skill India Digital.
+Core Requirements
+1. Authentication & Onboarding (auth.js & UI)
+⚬	Dynamic registration with 3 Roles: Student, Institute/Faculty, and Industry.
+⚬	Student/Faculty Shared Inputs: First/Middle/Last Name, Contact, Email, Password, Confirm Password, State, City/District, Gender, Last passed course, Aadhaar Number (Keep mock data as generic placeholders, no real digits), Upload ID Card placeholder. Dropdown to select College/Institute (Hardcode 5 dummy institutes).
+⚬	Student Specific: Student ID, Academic Percentage.
+⚬	Faculty Specific: Faculty ID, Registration Number.
+⚬	Industry Inputs: Company Name, Business Email, Corporate ID (CIN/GST), Industry Sector, Password.
+2. Profile Setup Module
+⚬	Photo upload placeholder.
+⚬	Skills: Multi-select array of at least 50 skills (e.g., C++, Java, Python, MySQL, HTML/CSS, Accounting, Blockchain, Cybersecurity, Digital Marketing, Excel). Multi-select for "Skills to Learn".
+⚬	Upload previous qualifications/degrees.
+⚬	Student: Select Branch/Department, Current Year, Date of Birth (must be disabled/non-editable after setup).
+⚬	Faculty: Select Department, Toggle for "Are you TPO?" (If Yes, show TPO ID input).
+3. Student Dashboard (Sidebar Navigation in app.js & index.html)
+⚬	Dashboard: Show courses joined, visual completion % (CSS progress bars), verified vs. unverified skills badges, and a GitHub-style activity contribution heatmap.
+⚬	Programmes & Events: List nearby localized education workshops, seminars, and industry expert talks.
+⚬	Learn & Upskill: Grid of 10 core course cards (Python, Java, C++, MySQL, HTML/CSS, Accounting, Blockchain, Cybersecurity, Digital Marketing, Excel). Cards must show Description, Duration, Rating, Level (Beginner/Intermediate/Expert), and Provider.
+⚬	Assessment: W3Schools-style UI for skill verification. Include a mock 10-question test layout for a selected skill.
+⚬	Articles: LinkedIn-style feed for announcements and news from institutes/companies.
+⚬	Help: FAQ section and direct links to government education portals.
+4. Data Layer (backend.js)
+⚬	Create robust mock data structures. Pre-load 5 institutes, the 50+ skills array, 10 upskilling courses, 5 local events, and sample articles. Do not generate real government ID digits in the mock data.
+Execution Instructions (Crucial for Token Limits)
+Do NOT generate all 5 files at once, as you will hit your output token limit. Follow this exact sequence:
+⚬	Step 1: Acknowledge this prompt and generate ONLY the full, complete code for index.html and style.css.
+⚬	At the end of your response, ask me to reply with "Next" to provide backend.js and auth.js.
+⚬	Wait for my prompt to generate the remaining files.
+Execute Step 1 now.
+
+################################################################################
+
+Stage 2: 
+
+# Role & Architectural Scope
+You are an expert Frontend Architect specializing in Vanilla JavaScript, HTML5, and CSS3 Single Page Applications (SPAs). 
+Your task is to refactor and expand the "SetuSkill" prototype according to Stage 2 requirements.
+
+### CRITICAL RULES
+1. STACK: Use ONLY pure HTML5, CSS3, and Vanilla JavaScript (ES6+). Do NOT use external frameworks like React, Vue, or Tailwind unless explicitly instructed.
+2. FILE INTEGRITY: Update existing SPA files (`index.html`, `style.css`, `app.js`/`backend.js`) cleanly using modular functions.
+3. PERSISTENCE: Use `localStorage` as the mock local database fallback before Firebase initialization.
+
+---
+
+## STAGE 2 IMPLEMENTATION MODULES
+
+### Module 1: Landing Page (GET STARTED) & Image Placeholders
+- Modify the GET STARTED / Landing Page left section to reserve dedicated visual containers for 2 showcase images.
+- Provide clean HTML/JS image variables (`imagePlaceholder1`, `imagePlaceholder2`) with clear comment tags where image URLs can be inserted.
+- Document image placeholder instructions in `README.md`.
+
+---
+
+### Module 2: Refactored Registration Forms
+1. Combined Name Field:
+   - Replace First, Middle, and Last name input fields with a single `"Your Name"` input for both **Student** and **Faculty/Teacher** registration forms.
+2. Student Dropdowns & Password Meter:
+   - **Last Passed Course:** Convert to a `<select>` dropdown with options: `10th Standard`, `12th Standard`, `Diploma`, `Bachelor's Degree`, `Other`.
+   - **College / Institute Dropdown:** Populate with 15 Engineering Colleges in Pune:
+     1. COEP Technological University
+     2. Vishwakarma Institute of Technology (VIT)
+     3. Pune Institute of Computer Technology (PICT)
+     4. MIT World Peace University (MIT-WPU)
+     5. Pimpri Chinchwad College of Engineering (PCCOE)
+     6. AISSMS College of Engineering
+     7. Cummins College of Engineering for Women
+     8. D.Y. Patil College of Engineering (Akurdi)
+     9. D.Y. Patil Institute of Technology (Pimpri)
+     10. Bharati Vidyapeeth College of Engineering (BVCOE)
+     11. Marathwada Mitra Mandal's College of Engineering (MMCOE)
+     12. Sinhgad College of Engineering (Vadgaon)
+     13. JSPM Rajarshi Shahu College of Engineering
+     14. Progressive Education Society's Modern College of Engineering
+     15. Trinity College of Engineering and Research
+   - **Password Strength Meter:** Add an interactive strength indicator under the password input evaluating:
+     - Minimum 6 characters
+     - At least 1 uppercase & 1 lowercase letter
+     - At least 1 number
+     - At least 1 special character (`!@#$%^&*`)
+     - Display dynamic color bar (Red = Weak, Yellow = Medium, Green = Strong).
+
+---
+
+### Module 3: Modern Top Navigation Bar (Layout Overhaul)
+- REMOVE the vertical left sidebar completely.
+- Build a fixed Top Navigation Header inspired by modern platforms (Coursera / LinkedIn):
+  - **Left:** Brand Logo ("SetuSkill") & Search Bar.
+  - **Center Navigation Tabs:**
+    - `Dashboard`
+    - `Learn & Upskill`
+    - `Jobs`
+    - `Connections`
+    - `Explore` (formerly Articles)
+    - `Programmes & Events`
+    - `Help`
+  - **Right:** Notifications icon & User Profile Avatar dropdown.
+
+---
+
+### Module 4: Connections & Direct Messaging System
+1. Connections Tab:
+   - Display a searchable grid of students, faculty, and industry profiles.
+   - Include a **"Connect"** button that toggles between `"Connect"`, `"Pending"`, and `"Connected"`.
+2. Direct Messaging Drawer/Modal:
+   - Build a real-time chat interface allowing users to select a connected user and send/receive mock direct messages stored in `localStorage`.
+
+---
+
+### Module 5: Jobs & Internships Tab (Skill Matcher Engine)
+1. Job Cards Structure:
+   - Title, Company Name, Location, Employee Count, Detailed Description, Required Skills array.
+2. Skill Match Algorithm:
+   - Compare user's `currentSkills` array against job `requiredSkills`.
+   - Calculate `% Match = (Matching Skills / Required Skills Count) * 100`.
+   - Display a visual badge (e.g., `85% Skill Match`).
+3. Sub-navigation inside Jobs:
+   - **All Jobs**: Grid of available internships/jobs with "Apply" button.
+   - **Applied Jobs**: List of jobs the student has submitted applications for.
+   - **Accepted Proposals**: List of applications accepted by industry partners.
+
+---
+
+### Module 6: Student Profile & Interactive Course/Certificate Engine
+1. Top Right Profile Modal/Page:
+   - Displays user details, profile photo update, skill badges, and personal analytics.
+2. Interactive Course Platform (Learn & Upskill Tab):
+   - Replace generic "+20%" progress buttons with actual interactive lesson content for **at least 3 courses** (e.g., *Python Programming*, *Web Development (HTML/CSS/JS)*, *Data Structures in C++*).
+   - Each course must contain 2-3 readable modules/lessons and a **"Take Skill Assessment"** button upon completion.
+3. Certificate Generator:
+   - Upon scoring ≥ 70% in the assessment, generate an interactive **Certificate of Completion** displaying:
+     - Student Name, Course Name, Completion Date, Unique Verification ID.
+   - Save earned certificates in user profile under a dedicated **"Certificates"** tab/gallery.
+
+---
+
+### Module 7: Faculty / Teacher Portal
+1. Student Directory:
+   - Filter and display students matching the faculty member's `College + Branch/Department`.
+   - Include options to view student profiles, check skill statuses, and direct message them.
+2. Upload Assessment Tab:
+   - Form for teachers to build custom assessments (Question, 4 Multiple Choice Options, Correct Answer).
+   - Once submitted, push the quiz to the global assessment pool for all students in that branch.
+
+---
+
+### Module 8: Explore Tab (Social Feed) & Community Event Uploads
+1. Explore Tab (Formerly Articles):
+   - LinkedIn-style social feed.
+   - Add interactive **Like** (counter toggles) and **Comment** section for every post.
+2. Floating Action Button ("+"):
+   - Position a floating `+` button on the bottom right.
+   - Clicking opens a modal allowing ANY user to create a post (Title, Description, Location, Timestamp).
+3. Host Event Uploads:
+   - Add a similar upload form inside **Programmes & Events** for users/faculty to host and list local workshops, webinars, and meetups.
+
+---
+
+### Module 9: Documentation & Firebase Setup Guide
+- Create a comprehensive `README.md` containing:
+  1. Instructions on where to insert landing page image URLs in HTML/JS.
+  2. Step-by-step guide to connect Firebase Web SDK (v9/v10) using your Firebase API Key.
+  3. Instructions for replacing `localStorage` calls with Firestore `getDoc`/`setDoc` methods.
