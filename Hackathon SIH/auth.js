@@ -1,9 +1,7 @@
 /* ============================================================================
-   SetuSkill — auth.js
-   View routing, authentication (login/register for 3 roles), and the
-   4-step profile setup wizard. Talks to backend.js (window.SS_DB) for all
-   persistence and hands off to app.js (window.SS_APP.init) once a user
-   lands on the dashboard.
+   SetuSkill — auth.js (Stage 2 Architecture)
+   Handles view routing, password strength evaluation, institute dropdowns,
+   registration with combined name fields, login, onboarding wizard, and topbar syncing.
    ============================================================================ */
 
 (function () {
@@ -12,7 +10,7 @@
   const DB = window.SS_DB;
 
   /* ------------------------------------------------------------------ */
-  /* View routing                                                        */
+  /* View Routing                                                       */
   /* ------------------------------------------------------------------ */
 
   const VIEW_IDS = ["view-landing", "view-auth", "view-profile-setup", "view-app"];
@@ -23,11 +21,10 @@
       if (el) el.classList.toggle("active", v === id);
     });
     window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
-    document.getElementById("appSidebar") && document.getElementById("appSidebar").classList.remove("is-open");
   }
 
   /* ------------------------------------------------------------------ */
-  /* Toasts                                                              */
+  /* Toast Notifications                                                */
   /* ------------------------------------------------------------------ */
 
   function toast(message, type) {
@@ -35,13 +32,13 @@
     if (!root) return;
     const el = document.createElement("div");
     el.className = "toast" + (type ? " toast--" + type : "");
-    el.textContent = message;
+    el.innerHTML = "<span>" + message + "</span>";
     root.appendChild(el);
-    setTimeout(() => el.remove(), 3200);
+    setTimeout(() => el.remove(), 3400);
   }
 
   /* ------------------------------------------------------------------ */
-  /* Auth card switching (inside #view-auth)                            */
+  /* Auth Card Switching                                                */
   /* ------------------------------------------------------------------ */
 
   function showAuthCard(id) {
@@ -52,11 +49,11 @@
 
   function openAuth(cardId) {
     showView("view-auth");
-    showAuthCard(cardId || "login");
+    showAuthCard(cardId || "auth-login");
   }
 
   /* ------------------------------------------------------------------ */
-  /* Institute dropdowns                                                */
+  /* Module 2: Populate 15 Pune Engineering Colleges                    */
   /* ------------------------------------------------------------------ */
 
   function populateInstituteSelects() {
@@ -64,38 +61,127 @@
     ["studentInstituteSelect", "facultyInstituteSelect"].forEach((id) => {
       const select = document.getElementById(id);
       if (!select) return;
+      // Clear existing options except placeholder
+      select.innerHTML = '<option value="">Select Pune Engineering College</option>';
       institutes.forEach((inst) => {
         const opt = document.createElement("option");
         opt.value = inst.id;
-        opt.textContent = inst.name;
+        opt.textContent = inst.name + " (" + (inst.location || "Pune") + ")";
         select.appendChild(opt);
       });
     });
-  }
 
-  /* ------------------------------------------------------------------ */
-  /* Routing after login / registration / resumed session               */
-  /* ------------------------------------------------------------------ */
-
-  function route(user) {
-    if (!user) { showView("view-landing"); return; }
-    if (user.profileComplete) {
-      enterApp(user);
-    } else {
-      enterProfileSetup(user);
+    // Populate landing page Pune colleges showcase grid
+    const landingGrid = document.getElementById("landingCollegesGrid");
+    if (landingGrid) {
+      landingGrid.innerHTML = "";
+      institutes.forEach((inst) => {
+        const card = document.createElement("div");
+        card.className = "college-pill-card";
+        card.innerHTML = '<span class="college-pill-card__icon">🏛️</span>'
+          + '<div><strong>' + inst.name + '</strong><span>' + (inst.location || "Pune, Maharashtra") + '</span></div>';
+        landingGrid.appendChild(card);
+      });
     }
   }
+
+  /* ------------------------------------------------------------------ */
+  /* Module 2: Interactive Password Strength Meter                      */
+  /* ------------------------------------------------------------------ */
+
+  function evaluatePasswordStrength(password) {
+    const checks = {
+      length: password.length >= 6,
+      caseMix: /[A-Z]/.test(password) && /[a-z]/.test(password),
+      hasNumber: /\d/.test(password),
+      hasSpecial: /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(password)
+    };
+    let score = 0;
+    if (checks.length) score++;
+    if (checks.caseMix) score++;
+    if (checks.hasNumber) score++;
+    if (checks.hasSpecial) score++;
+
+    let level = "none";
+    let label = "Strength: None";
+    if (password.length > 0) {
+      if (score <= 2) { level = "weak"; label = "Strength: Weak ⚠️"; }
+      else if (score === 3) { level = "medium"; label = "Strength: Medium ⚡"; }
+      else if (score >= 4) { level = "strong"; label = "Strength: Strong ✅"; }
+    }
+
+    return { score, level, label, checks };
+  }
+
+  function setupPasswordMeter(inputId, fillId, labelId, rulePrefix) {
+    const input = document.getElementById(inputId);
+    const fill = document.getElementById(fillId);
+    const label = document.getElementById(labelId);
+    if (!input || !fill || !label) return;
+
+    input.addEventListener("input", () => {
+      const val = input.value;
+      const res = evaluatePasswordStrength(val);
+
+      fill.className = "pw-meter__fill";
+      if (res.level === "weak") fill.classList.add("is-weak");
+      else if (res.level === "medium") fill.classList.add("is-medium");
+      else if (res.level === "strong") fill.classList.add("is-strong");
+
+      label.textContent = res.label;
+
+      const ruleLen = document.getElementById("rule-" + rulePrefix + "-len");
+      const ruleCase = document.getElementById("rule-" + rulePrefix + "-case");
+      const ruleNum = document.getElementById("rule-" + rulePrefix + "-num");
+      const ruleSpec = document.getElementById("rule-" + rulePrefix + "-special");
+
+      if (ruleLen) ruleLen.className = res.checks.length ? "valid" : "";
+      if (ruleLen) ruleLen.textContent = (res.checks.length ? "✓" : "✕") + " Min 6 characters";
+
+      if (ruleCase) ruleCase.className = res.checks.caseMix ? "valid" : "";
+      if (ruleCase) ruleCase.textContent = (res.checks.caseMix ? "✓" : "✕") + " Uppercase & lowercase";
+
+      if (ruleNum) ruleNum.className = res.checks.hasNumber ? "valid" : "";
+      if (ruleNum) ruleNum.textContent = (res.checks.hasNumber ? "✓" : "✕") + " At least 1 number";
+
+      if (ruleSpec) ruleSpec.className = res.checks.hasSpecial ? "valid" : "";
+      if (ruleSpec) ruleSpec.textContent = (res.checks.hasSpecial ? "✓" : "✕") + " Special char (!@#$%^&*)";
+    });
+  }
+
+  function initPasswordMeters() {
+    setupPasswordMeter("studentPassword", "studentPwFill", "studentPwLabel", "stu");
+    setupPasswordMeter("facultyPassword", "facultyPwFill", "facultyPwLabel", "fac");
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Topbar & User Menu Synchronization                                */
+  /* ------------------------------------------------------------------ */
 
   function updateTopbar(user) {
     const nameEl = document.getElementById("topbarName");
     const roleEl = document.getElementById("topbarRole");
     const avatarEl = document.getElementById("topbarAvatar");
     const greetEl = document.getElementById("dashGreetName");
-    const displayName = user.role === "industry" ? (user.companyName || "Industry Partner") : [user.firstName, user.lastName].filter(Boolean).join(" ") || user.email;
+    const dropdownName = document.getElementById("dropdownFullName");
+    const dropdownSub = document.getElementById("dropdownSub");
+    const facultyPortalBtn = document.getElementById("menuOpenFacultyPortal");
+
+    const displayName = user.fullName || [user.firstName, user.lastName].filter(Boolean).join(" ") || user.companyName || user.email;
+    const initial = displayName.trim().charAt(0).toUpperCase();
+
     if (nameEl) nameEl.textContent = displayName;
-    if (roleEl) roleEl.textContent = user.role === "faculty" ? "Institute / Faculty" : user.role;
-    if (avatarEl) avatarEl.textContent = (displayName || "?").trim().charAt(0).toUpperCase();
-    if (greetEl) greetEl.textContent = user.role === "industry" ? displayName : (user.firstName || displayName);
+    if (roleEl) roleEl.textContent = user.role === "faculty" ? "Faculty Mentor" : user.role === "industry" ? "Industry Partner" : "Engineering Student";
+    if (avatarEl) avatarEl.textContent = initial;
+    if (greetEl) greetEl.textContent = displayName.split(" ")[0] || displayName;
+    if (dropdownName) dropdownName.textContent = displayName;
+
+    const institute = DB.Catalog.getInstituteById(user.institute);
+    if (dropdownSub) dropdownSub.textContent = institute ? institute.name : (user.role === "industry" ? user.sector : "SetuSkill Member");
+
+    if (facultyPortalBtn) {
+      facultyPortalBtn.hidden = user.role !== "faculty";
+    }
   }
 
   function enterApp(user) {
@@ -106,8 +192,20 @@
     }
   }
 
+  function route(user) {
+    if (!user) {
+      showView("view-landing");
+      return;
+    }
+    if (user.profileComplete) {
+      enterApp(user);
+    } else {
+      enterProfileSetup(user);
+    }
+  }
+
   /* ------------------------------------------------------------------ */
-  /* Login                                                               */
+  /* Login Implementation                                               */
   /* ------------------------------------------------------------------ */
 
   function initLogin() {
@@ -133,27 +231,29 @@
 
       const user = DB.Users.findByEmail(email, role);
       if (!user || user.passwordHash !== DB.mockHash(password)) {
-        toast("Email, password or role doesn't match our records.", "error");
+        toast("Email, password or role does not match our records.", "error");
         return;
       }
       DB.Session.set(user.id);
       DB.Activity.log(user.id, "login");
-      toast("Welcome back, " + (user.firstName || user.companyName || "there") + "!", "success");
+      const name = user.fullName || user.firstName || user.companyName || "there";
+      toast("Welcome back, " + name + "! 🚀", "success");
       form.reset();
       route(user);
     });
 
-    // ---- Demo instant-login buttons ----
+    // Demo Instant Login Handlers
     function demoLogin(demoId) {
       const user = DB.Users.findById(demoId);
       if (!user) {
-        toast("Demo account not found. Please refresh the page.", "error");
+        toast("Demo account not found. Resetting seeds...", "error");
+        DB.seed();
         return;
       }
       DB.Session.set(user.id);
       DB.Activity.log(user.id, "login");
-      const name = user.firstName || user.companyName || "Demo User";
-      toast("Instant login as " + name + " (" + user.role + ") 🚀", "success");
+      const name = user.fullName || user.companyName || "Demo User";
+      toast("Instant login as " + name + " (" + user.role + ") 🎓", "success");
       form.reset();
       route(user);
     }
@@ -167,28 +267,21 @@
   }
 
   /* ------------------------------------------------------------------ */
-  /* Registration — shared helpers                                      */
+  /* Module 2: Registration Handlers with Combined Name Field           */
   /* ------------------------------------------------------------------ */
 
-  function formToObject(form, fileFieldNames) {
+  function formToObject(form) {
     const data = {};
     const fd = new FormData(form);
     fd.forEach((value, key) => {
-      if (fileFieldNames && fileFieldNames.includes(key)) return; // handled separately
       if (key === "terms") return;
       data[key] = typeof value === "string" ? value.trim() : value;
-    });
-    (fileFieldNames || []).forEach((key) => {
-      const input = form.querySelector('[name="' + key + '"]');
-      if (input && input.files && input.files[0]) {
-        data[key + "FileName"] = input.files[0].name;
-      }
     });
     return data;
   }
 
-  function registerUser(role, form, fileFieldNames) {
-    const data = formToObject(form, fileFieldNames);
+  function registerUser(role, form) {
+    const data = formToObject(form);
     const email = (data.email || data.businessEmail || "").toLowerCase();
 
     if (DB.Users.findByEmail(email, role)) {
@@ -199,6 +292,13 @@
     const password = data.password;
     delete data.password;
     delete data.confirmPassword;
+
+    // Parse Combined Name Field
+    if (data.fullName) {
+      const parts = data.fullName.trim().split(/\s+/);
+      data.firstName = parts[0] || "";
+      data.lastName = parts.slice(1).join(" ") || "";
+    }
 
     const user = DB.Users.create(
       Object.assign({}, data, {
@@ -220,9 +320,13 @@
         toast("Passwords do not match.", "error");
         return;
       }
-      const user = registerUser("student", form, ["idCard"]);
+      if (form.password.value.length < 6) {
+        toast("Password must be at least 6 characters.", "error");
+        return;
+      }
+      const user = registerUser("student", form);
       if (!user) return;
-      toast("Student account created. Let's set up your profile.", "success");
+      toast("Student account registered! Let's set up your profile.", "success");
       form.reset();
       enterProfileSetup(user);
     });
@@ -237,9 +341,9 @@
         toast("Passwords do not match.", "error");
         return;
       }
-      const user = registerUser("faculty", form, ["idCard"]);
+      const user = registerUser("faculty", form);
       if (!user) return;
-      toast("Faculty account created. Let's set up your profile.", "success");
+      toast("Faculty account created! Completing profile...", "success");
       form.reset();
       enterProfileSetup(user);
     });
@@ -250,16 +354,16 @@
     if (!form) return;
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      const user = registerUser("industry", form, []);
+      const user = registerUser("industry", form);
       if (!user) return;
-      toast("Industry account created. A few more details to go.", "success");
+      toast("Industry account created! Welcome to SetuSkill.", "success");
       form.reset();
       enterProfileSetup(user);
     });
   }
 
   /* ------------------------------------------------------------------ */
-  /* Profile setup wizard                                                */
+  /* Profile Setup Wizard                                                */
   /* ------------------------------------------------------------------ */
 
   const setupState = {
@@ -287,10 +391,7 @@
         chip.addEventListener("click", () => {
           if (selectedSet.has(skill)) selectedSet.delete(skill);
           else selectedSet.add(skill);
-          // Re-render both grids: freeing a skill from one set makes it
-          // selectable again in the other.
           if (window.SS_RENDER_SKILL_GRIDS) window.SS_RENDER_SKILL_GRIDS();
-          else renderSkillGrid(containerId, allSkills, selectedSet, otherSet, searchTerm);
         });
         container.appendChild(chip);
       });
@@ -305,15 +406,12 @@
 
   function initSkillGrids() {
     const allSkills = DB.Catalog.getSkills();
-
     const haveSearch = document.getElementById("skillsHaveSearch");
     const learnSearch = document.getElementById("skillsLearnSearch");
 
     if (haveSearch) haveSearch.addEventListener("input", () => renderSkillGrid("skillsHaveGrid", allSkills, setupState.skillsHave, setupState.skillsLearn, haveSearch.value));
     if (learnSearch) learnSearch.addEventListener("input", () => renderSkillGrid("skillsLearnGrid", allSkills, setupState.skillsLearn, setupState.skillsHave, learnSearch.value));
 
-    // Exposed so a skill toggled in one grid can refresh the other (a skill
-    // removed from "have" must reappear as selectable in "learn", and vice versa).
     window.SS_RENDER_SKILL_GRIDS = function () {
       renderSkillGrid("skillsHaveGrid", allSkills, setupState.skillsHave, setupState.skillsLearn, haveSearch ? haveSearch.value : "");
       renderSkillGrid("skillsLearnGrid", allSkills, setupState.skillsLearn, setupState.skillsHave, learnSearch ? learnSearch.value : "");
@@ -352,31 +450,18 @@
     if (industryFields) industryFields.hidden = role !== "industry";
   }
 
-  function resetSetupWizard(user) {
+  function enterProfileSetup(user) {
     setupState.step = 1;
     setupState.skillsHave = new Set(user.skillsHave || []);
     setupState.skillsLearn = new Set(user.skillsLearn || []);
     setupState.qualifications = [];
 
-    const form = document.getElementById("profileSetupForm");
-    if (form) form.reset();
-
-    const preview = document.getElementById("photoPreview");
-    if (preview) preview.innerHTML = "📷";
-
-    const qualList = document.getElementById("qualificationsList");
-    if (qualList) qualList.innerHTML = "";
-
-    const tpoIdField = document.getElementById("tpoIdField");
-    if (tpoIdField) tpoIdField.hidden = true;
+    const headlineInput = document.getElementById("setupHeadline");
+    if (headlineInput && user.headline) headlineInput.value = user.headline;
 
     showRoleFieldsForStep4(user.role);
     if (window.SS_RENDER_SKILL_GRIDS) window.SS_RENDER_SKILL_GRIDS();
     updateSetupUI();
-  }
-
-  function enterProfileSetup(user) {
-    resetSetupWizard(user);
     showView("view-profile-setup");
   }
 
@@ -409,7 +494,7 @@
         const preview = document.getElementById("photoPreview");
         if (!file || !preview) return;
         const reader = new FileReader();
-        reader.onload = () => { preview.innerHTML = '<img src="' + reader.result + '" alt="Profile photo preview">'; };
+        reader.onload = () => { preview.innerHTML = '<img src="' + reader.result + '" alt="Profile photo">'; };
         reader.readAsDataURL(file);
       });
     }
@@ -442,6 +527,7 @@
       if (!user) { showView("view-landing"); return; }
 
       const patch = {
+        headline: document.getElementById("setupHeadline") ? document.getElementById("setupHeadline").value.trim() : "",
         skillsHave: Array.from(setupState.skillsHave),
         skillsLearn: Array.from(setupState.skillsLearn),
         qualifications: setupState.qualifications.slice(),
@@ -453,7 +539,6 @@
         patch.currentYear = form.currentYear.value;
         patch.dob = document.getElementById("studentDob").value;
         patch.dobLocked = true;
-        document.getElementById("studentDob").disabled = true;
       } else if (user.role === "faculty") {
         patch.facultyDepartment = form.facultyDepartment.value;
         patch.isTpo = !!(document.getElementById("tpoToggle") && document.getElementById("tpoToggle").checked);
@@ -462,26 +547,17 @@
 
       const updated = DB.Users.update(user.id, patch);
       DB.Activity.log(user.id, "profile_setup_completed");
-      toast("Profile set up. Welcome to your dashboard!", "success");
+      toast("Profile verified & saved! Welcome to SetuSkill.", "success");
       enterApp(updated);
     });
   }
 
   /* ------------------------------------------------------------------ */
-  /* Logout & landing navigation                                        */
+  /* Global Navigation & User Menu Listeners                             */
   /* ------------------------------------------------------------------ */
 
-  function initLogout() {
-    const btn = document.getElementById("logoutBtn");
-    if (!btn) return;
-    btn.addEventListener("click", () => {
-      DB.Session.clear();
-      showView("view-landing");
-      toast("You've been logged out.");
-    });
-  }
-
-  function initGlobalNav() {
+  function initGlobalListeners() {
+    // Auth modals / triggers
     document.querySelectorAll('[data-open-auth]').forEach((el) => {
       el.addEventListener("click", (e) => {
         e.preventDefault();
@@ -517,33 +593,51 @@
     const siteNav = document.querySelector(".site-nav");
     if (hamburgerBtn && siteNav) {
       hamburgerBtn.addEventListener("click", () => {
-        const open = siteNav.classList.toggle("is-open");
-        hamburgerBtn.setAttribute("aria-expanded", String(open));
+        siteNav.classList.toggle("is-open");
       });
     }
 
-    const sidebarToggleBtn = document.getElementById("sidebarToggleBtn");
-    const sidebar = document.getElementById("appSidebar");
-    if (sidebarToggleBtn && sidebar) {
-      sidebarToggleBtn.addEventListener("click", () => sidebar.classList.toggle("is-open"));
+    // Top Nav User Dropdown Toggle
+    const userAvatarBtn = document.getElementById("userAvatarBtn");
+    const userDropdownMenu = document.getElementById("userDropdownMenu");
+    if (userAvatarBtn && userDropdownMenu) {
+      userAvatarBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        userDropdownMenu.hidden = !userDropdownMenu.hidden;
+      });
+      document.addEventListener("click", (e) => {
+        if (!userDropdownMenu.hidden && !e.target.closest("#userMenuWrap")) {
+          userDropdownMenu.hidden = true;
+        }
+      });
+    }
+
+    // Logout
+    const logoutBtn = document.getElementById("logoutBtn");
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", () => {
+        DB.Session.clear();
+        showView("view-landing");
+        toast("You have signed out.");
+        if (userDropdownMenu) userDropdownMenu.hidden = true;
+      });
     }
   }
 
   /* ------------------------------------------------------------------ */
-  /* Boot                                                                */
+  /* Boot                                                               */
   /* ------------------------------------------------------------------ */
 
   document.addEventListener("DOMContentLoaded", () => {
     DB.seed();
     populateInstituteSelects();
-
-    initGlobalNav();
+    initPasswordMeters();
+    initGlobalListeners();
     initLogin();
     initRegisterStudent();
     initRegisterFaculty();
     initRegisterIndustry();
     initProfileSetupWizard();
-    initLogout();
 
     const existingUser = DB.Session.currentUser();
     if (existingUser) {
@@ -551,7 +645,5 @@
     }
   });
 
-  // Exposed for app.js (logout button lives in the app shell, but a
-  // consistent single entry point keeps behaviour predictable).
-  window.SS_AUTH = { showView, toast, enterApp, enterProfileSetup };
+  window.SS_AUTH = { showView, toast, enterApp, enterProfileSetup, updateTopbar };
 })();
