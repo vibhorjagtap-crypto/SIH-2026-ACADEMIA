@@ -1334,8 +1334,6 @@ hr {
   align-items: center;
   gap: 1.5rem;
   margin: 1.5rem 0;
-<<<<<<< HEAD
-=======
 }
 
 .photo-upload__preview {
@@ -3235,7 +3233,6 @@ hr {
   .panel--wide {
     grid-column: auto;
   }
->>>>>>> f3782dec85e079ee454b04f9a5b8b0754893b233
 }
 
 .photo-upload__preview {
