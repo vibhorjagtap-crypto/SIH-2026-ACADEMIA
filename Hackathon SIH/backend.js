@@ -1,5 +1,5 @@
 /* ============================================================================
-   SetuSkill — backend.js (Stage 2 Architecture)
+   SkillSetu — backend.js (Stage 2 Architecture)
    Mock data & storage layer with full localStorage persistence.
    Manages catalog data, users, sessions, enrollments, interactive course modules,
    assessments, certificates, jobs/internships, connections, direct messages,
@@ -323,7 +323,7 @@
       duration: "6 weeks",
       rating: 4.8,
       level: "Beginner",
-      provider: "SetuSkill Academy",
+      provider: "SkillSetu Academy",
       icon: "🐍",
       modules: [
         {
@@ -426,7 +426,7 @@ You have completed all 3 modules! Click **Take Skill Assessment** to earn your v
       duration: "6 weeks",
       rating: 4.9,
       level: "Beginner",
-      provider: "SetuSkill Academy",
+      provider: "SkillSetu Academy",
       icon: "🌐",
       modules: [
         {
@@ -523,7 +523,7 @@ function saveUserSkill(skillName) {
       duration: "7 weeks",
       rating: 4.8,
       level: "Intermediate",
-      provider: "SetuSkill Academy",
+      provider: "SkillSetu Academy",
       icon: "⚡",
       modules: [
         {
@@ -599,10 +599,10 @@ You are now ready to take the Data Structures in C++ verification exam!`
     { id: "java", title: "Java Essentials", description: "Object-oriented programming fundamentals, Collections framework, and multi-threading through hands-on Java 21 projects.", duration: "8 weeks", rating: 4.6, level: "Beginner", provider: "PICT Labs Online", icon: "☕" },
     { id: "mysql", title: "Database Design with MySQL", description: "Model, query, and optimize relational databases, indexing, stored procedures, and 3NF normalization.", duration: "5 weeks", rating: 4.5, level: "Beginner", provider: "COEP Tech Labs", icon: "🗄️" },
     { id: "accounting", title: "Accounting Fundamentals", description: "Ledgers, balance sheets, and financial statements for tech managers and non-finance founders.", duration: "6 weeks", rating: 4.3, level: "Beginner", provider: "MIT-WPU Management School", icon: "📒" },
-    { id: "blockchain", title: "Blockchain Foundations", description: "Understand distributed ledgers, cryptographic proofs, Solidity smart contracts, and Web3 use cases.", duration: "5 weeks", rating: 4.4, level: "Intermediate", provider: "SetuSkill Academy", icon: "⛓️" },
+    { id: "blockchain", title: "Blockchain Foundations", description: "Understand distributed ledgers, cryptographic proofs, Solidity smart contracts, and Web3 use cases.", duration: "5 weeks", rating: 4.4, level: "Intermediate", provider: "SkillSetu Academy", icon: "⛓️" },
     { id: "cybersecurity", title: "Cybersecurity Basics", description: "Threat vectors, network defense, penetration testing foundations, and OWASP Top 10 security guidelines.", duration: "6 weeks", rating: 4.7, level: "Intermediate", provider: "VIT Cyber Cell", icon: "🛡️" },
     { id: "digitalmarketing", title: "Digital Marketing Bootcamp", description: "Technical SEO, SEM analytics, growth loops, and social media campaign optimization.", duration: "4 weeks", rating: 4.4, level: "Beginner", provider: "Modern College Innovation Hub", icon: "📣" },
-    { id: "excel", title: "Excel & Power BI for Analytics", description: "Advanced formulas, pivot tables, DAX queries, and executive dashboards for everyday business intelligence.", duration: "4 weeks", rating: 4.7, level: "Beginner", provider: "SetuSkill Academy", icon: "📊" }
+    { id: "excel", title: "Excel & Power BI for Analytics", description: "Advanced formulas, pivot tables, DAX queries, and executive dashboards for everyday business intelligence.", duration: "4 weeks", rating: 4.7, level: "Beginner", provider: "SkillSetu Academy", icon: "📊" }
   ];
 
   /* ------------------------------------------------------------------ */
@@ -711,7 +711,7 @@ You are now ready to take the Data Structures in C++ verification exam!`
       likes: 142,
       likedBy: ["demo-student"],
       comments: [
-        { id: "c-1", author: "Priya Sharma", role: "Student", text: "Proud to see PICT leading the way! The verified skill badges on SetuSkill helped tremendously.", timestamp: "2026-08-25T14:30:00.000Z" }
+        { id: "c-1", author: "Priya Sharma", role: "Student", text: "Proud to see PICT leading the way! The verified skill badges on SkillSetu helped tremendously.", timestamp: "2026-08-25T14:30:00.000Z" }
       ],
       timestamp: "2026-08-25T10:00:00.000Z",
       location: "Pune, India"
@@ -723,7 +723,7 @@ You are now ready to take the Data Structures in C++ verification exam!`
       authorAvatar: "TB",
       authorId: "demo-industry",
       title: "Hiring 20+ Engineering Interns Across Pune Campuses",
-      content: "We're expanding our Pune R&D center! Looking for students with proven foundations in Web Development (HTML/CSS/JS/React), Python scripting, and Git. Check out the Jobs tab to apply directly with your verified SetuSkill profile.",
+      content: "We're expanding our Pune R&D center! Looking for students with proven foundations in Web Development (HTML/CSS/JS/React), Python scripting, and Git. Check out the Jobs tab to apply directly with your verified SkillSetu profile.",
       likes: 98,
       likedBy: [],
       comments: [
@@ -738,8 +738,8 @@ You are now ready to take the Data Structures in C++ verification exam!`
       authorRole: "Institute",
       authorAvatar: "CU",
       authorId: "inst-pune-1",
-      title: "SetuSkill National Ledger Integration Complete",
-      content: "COEP Tech has officially synced all 2026 batch academic courses with the SetuSkill verification pipeline. Students can now directly take skill assessments and showcase authenticated certificates to recruiters.",
+      title: "SkillSetu National Ledger Integration Complete",
+      content: "COEP Tech has officially synced all 2026 batch academic courses with the SkillSetu verification pipeline. Students can now directly take skill assessments and showcase authenticated certificates to recruiters.",
       likes: 215,
       likedBy: ["demo-student", "demo-faculty"],
       comments: [],
@@ -843,7 +843,7 @@ You are now ready to take the Data Structures in C++ verification exam!`
       const raw = localStorage.getItem(key);
       return raw ? JSON.parse(raw) : fallback;
     } catch (e) {
-      console.warn("SetuSkill DB read error:", key, e);
+      console.warn("SkillSetu DB read error:", key, e);
       return fallback;
     }
   }
@@ -852,7 +852,7 @@ You are now ready to take the Data Structures in C++ verification exam!`
     try {
       localStorage.setItem(key, JSON.stringify(value));
     } catch (e) {
-      console.warn("SetuSkill DB write error:", key, e);
+      console.warn("SkillSetu DB write error:", key, e);
     }
   }
 
@@ -1177,7 +1177,7 @@ You are now ready to take the Data Structures in C++ verification exam!`
         courseTitle,
         score: scorePct,
         issuedDate: new Date().toISOString(),
-        issuer: "SetuSkill National Skill Ledger & Industry Council",
+        issuer: "SkillSetu National Skill Ledger & Industry Council",
         status: "Verified & Authenticated"
       };
       // Prevent duplicate certificates for same course
@@ -1243,7 +1243,7 @@ You are now ready to take the Data Structures in C++ verification exam!`
         jobId,
         appliedDate: new Date().toISOString(),
         status: "Under Review",
-        note: note || "Application submitted via SetuSkill Verified Profile"
+        note: note || "Application submitted via SkillSetu Verified Profile"
       };
       list.push(newApp);
       all[userId] = list;
