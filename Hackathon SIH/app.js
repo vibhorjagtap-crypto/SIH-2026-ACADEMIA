@@ -16,7 +16,7 @@
 
   const DB = global.SS_DB;
   if (!DB) {
-    console.error("SetuSkill app.js: SS_DB is not loaded. Check script load order.");
+    console.error("SkillSetu app.js: SS_DB is not loaded. Check script load order.");
     return;
   }
 
@@ -705,7 +705,7 @@
       container.querySelectorAll("[data-apply-job]").forEach((btn) => {
         btn.addEventListener("click", () => {
           const jobId = btn.dataset.applyJob;
-          const res = DB.JobApplications.apply(user.id, jobId, "Applied via SetuSkill Verified Ledger");
+          const res = DB.JobApplications.apply(user.id, jobId, "Applied via SkillSetu Verified Ledger");
           if (res.success) {
             toast("Application submitted successfully! 🚀", "success");
             renderJobs(user);
@@ -943,7 +943,7 @@
             ? "Thank you for the update! Keep advancing your verified project badges."
             : partner.role === "industry"
               ? "We reviewed your skill match percentage. We will schedule a technical screening soon."
-              : "Great collaborating with you on SetuSkill!";
+              : "Great collaborating with you on SkillSetu!";
           DB.Messages.send(partner.id, partner.fullName || "Peer", currentUser.id, reply);
           renderActiveChatThread();
         }
@@ -1143,7 +1143,7 @@
     const user = currentUser;
     const displayName = user.fullName || user.companyName || user.email;
     setText("profileModalName", displayName);
-    setText("profileModalHeadline", user.headline || "Accredited SetuSkill Member");
+    setText("profileModalHeadline", user.headline || "Accredited SkillSetu Member");
     setText("profileModalRole", user.role === "faculty" ? "Faculty Mentor" : user.role === "industry" ? "Industry Partner" : "Student");
 
     const inst = DB.Catalog.getInstituteById(user.institute);

@@ -177,7 +177,7 @@
     if (dropdownName) dropdownName.textContent = displayName;
 
     const institute = DB.Catalog.getInstituteById(user.institute);
-    if (dropdownSub) dropdownSub.textContent = institute ? institute.name : (user.role === "industry" ? user.sector : "SetuSkill Member");
+    if (dropdownSub) dropdownSub.textContent = institute ? institute.name : (user.role === "industry" ? user.sector : "SkillSetu Member");
 
     if (facultyPortalBtn) {
       facultyPortalBtn.hidden = user.role !== "faculty";
@@ -356,7 +356,7 @@
       e.preventDefault();
       const user = registerUser("industry", form);
       if (!user) return;
-      toast("Industry account created! Welcome to SetuSkill.", "success");
+      toast("Industry account created! Welcome to SkillSetu.", "success");
       form.reset();
       enterProfileSetup(user);
     });
@@ -547,7 +547,7 @@
 
       const updated = DB.Users.update(user.id, patch);
       DB.Activity.log(user.id, "profile_setup_completed");
-      toast("Profile verified & saved! Welcome to SetuSkill.", "success");
+      toast("Profile verified & saved! Welcome to SkillSetu.", "success");
       enterApp(updated);
     });
   }
